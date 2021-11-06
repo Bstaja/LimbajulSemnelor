@@ -1,0 +1,2 @@
+# LimbajulSemnelor
+Proiect PA
