@@ -1,0 +1,33 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="LimbajulSemnelor"
+run/main_scene="res://Main.tscn"
+boot_splash/image="res://icon.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/icon="res://icon.png"
+config/quit_on_go_back=false
+
+[display]
+
+window/handheld/orientation="portrait"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+threads/thread_model=2
+vram_compression/import_etc=true
+environment/default_environment="res://default_env.tres"

@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Meniu/Titlu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Meniu/Background.tscn" type="PackedScene" id=3]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MeniuPrincipal" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" parent="MeniuPrincipal" instance=ExtResource( 3 )]
+
+[node name="ListaButoane" type="ScrollContainer" parent="MeniuPrincipal"]
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 1.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MeniuPrincipal/ListaButoane"]
+margin_right = 1024.0
+margin_bottom = 540.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Titlu" parent="MeniuPrincipal" instance=ExtResource( 2 )]
