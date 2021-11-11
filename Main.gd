@@ -64,7 +64,6 @@ func creare_meniu_principal():
 		lista.add_child(b)
 		#Se seteaza textul butonului
 		b.text = btn
-		#b.size_flags_vertical = SIZE_EXPAND_FILL
 		#Se adauga butonul creat in vectorul cu butoane
 		btn_meniu.append(b)
 	
@@ -94,8 +93,6 @@ func creare_categorii_cuvinte():
 	#Creearea butoanelor pt categorii
 	for btn in btn_denumiri["categorii"]:
 		var b = Button.new()
-		#Setarea numelui obiectului de tip buton - va fi foarte utila
-		b.name = btn
 		lista.add_child(b)
 		b.text = btn
 		b.size_flags_horizontal = SIZE_EXPAND_FILL
