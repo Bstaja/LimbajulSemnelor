@@ -156,7 +156,10 @@ func creare_video(categorie, cuvant):
 		player_video.margin_bottom = player_video.margin_top*(-1)
 		player_video.play()
 		
+		fereastra_cuvant.dimensionare_buton_replay(rez_ecran.x/8)
 		fereastra_cuvant.get_node("ButonInapoi").connect("pressed", self, "stergere_video")
+		fereastra_cuvant.get_node("Video/Replay/Buton").connect("pressed", fereastra_cuvant, "reluare_video")
+		player_video.connect("finished", fereastra_cuvant, "afisare_buton_reluare")
 
 func stergere_video():
 	get_node("Categorie").visible = true
