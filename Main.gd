@@ -70,6 +70,7 @@ func creare_meniu_principal():
 	
 	#Conectarea butoanelor din meniu la functii
 	btn_meniu[meniu.CUVINTE].connect("pressed", self, "afisare_categorii_cuvinte")
+	btn_meniu[meniu.TEXT_DACTILEME].connect("pressed", self, "afisare_text_dactil")
 
 func afisare_meniu_principal():
 	$MeniuPrincipal.visible = true
@@ -164,3 +165,14 @@ func creare_video(categorie, cuvant):
 func stergere_video():
 	get_node("Categorie").visible = true
 	get_node("Cuvant").queue_free()
+
+func afisare_text_dactil():
+	$MeniuPrincipal.visible = false
+	var text_dactil = load("res://Meniu/Cuvinte/TextDactileme.tscn")
+	text_dactil = text_dactil.instance()
+	add_child(text_dactil)
+	text_dactil.get_node("ButonInapoi").connect("pressed", self, "ascunde_text_dactil")
+
+func ascunde_text_dactil():
+	get_node("MeniuPrincipal").visible = true
+	get_node("TextDactileme").queue_free()

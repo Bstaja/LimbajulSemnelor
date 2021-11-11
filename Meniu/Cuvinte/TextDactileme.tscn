@@ -1,0 +1,125 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Tema/Tema.tres" type="Theme" id=1]
+[ext_resource path="res://Meniu/Cuvinte/TextDactileme.gd" type="Script" id=2]
+[ext_resource path="res://Meniu/Background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Tema/dactileme.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "setare_litera_curenta"
+} ]
+}
+
+[node name="TextDactileme" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" parent="." instance=ExtResource( 3 )]
+focus_mode = 2
+
+[node name="Denumire" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="Denumire"]
+anchor_left = 0.05
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -39.0
+margin_bottom = 39.0
+text = "Text -> Dactileme"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButonInapoi" type="Button" parent="."]
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+text = "Înapoi"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CasetaText" type="Panel" parent="."]
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSplitContainer" type="HSplitContainer" parent="CasetaText"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="LineEdit" parent="CasetaText/HSplitContainer"]
+margin_right = 940.0
+margin_bottom = 118.0
+size_flags_horizontal = 3
+align = 1
+clear_button_enabled = true
+placeholder_text = "Introduceți textul aici"
+placeholder_alpha = 0.68
+caret_blink = true
+caret_blink_speed = 0.4
+
+[node name="Buton" type="Button" parent="CasetaText/HSplitContainer"]
+margin_left = 948.0
+margin_right = 1024.0
+margin_bottom = 118.0
+text = " > "
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/New Anim" = SubResource( 1 )
+
+[node name="Dactileme" type="Sprite" parent="."]
+position = Vector2( 400, 500 )
+scale = Vector2( 2.47889, 2.47889 )
+texture = ExtResource( 4 )
+hframes = 6
+vframes = 6
+
+[node name="LiteraCurenta" type="Panel" parent="."]
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 0.9
+
+[node name="Text" type="Label" parent="LiteraCurenta"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -39.0
+margin_bottom = 39.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="CasetaText/HSplitContainer/Buton" to="." method="_on_Buton_pressed"]
