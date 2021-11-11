@@ -14,7 +14,9 @@ var btn_denumiri = {
 		"Galben",
 		"Roșu",
 	],
-	"Video": {
+}
+
+var videoclipuri = {
 		"Animale": {
 			"Câine":"res://ResurseVideo/Animale/caine.webm",
 			"Papagal":"res://ResurseVideo/Animale/papagal.webm",
@@ -26,7 +28,6 @@ var btn_denumiri = {
 			"Roșu":"res://ResurseVideo/Culori/rosu.webm",
 		},
 	}
-}
 
 #Enumerator pt butoanele din meniul principal (trebuie puse in ordinea in care au fost scrise mai sus)
 enum meniu	{
@@ -138,20 +139,22 @@ func stergere_lista_cuvinte():
 	get_node("Categorie").queue_free()
 
 func creare_video(categorie, cuvant):
-	if(btn_denumiri["Video"][categorie].has(cuvant)):
+	if(videoclipuri[categorie].has(cuvant)):
 		get_node("Categorie").visible = false
 		var fereastra_cuvant = load("res://Meniu/Cuvinte/Cuvant.tscn")
 		fereastra_cuvant = fereastra_cuvant.instance()
-		var video = load(btn_denumiri["Video"][categorie][cuvant])
+		var video = load(videoclipuri[categorie][cuvant])
 		var rez_ecran = OS.window_size
+		var player_video = fereastra_cuvant.get_node("Video/VideoPlayer")
 		
 		add_child(fereastra_cuvant)
 		fereastra_cuvant.get_node("Denumire/Text").text = cuvant
-		fereastra_cuvant.get_node("VideoPlayer").stream = video
-		var rez_video = fereastra_cuvant.get_node("VideoPlayer").get_video_texture().get_size()
+		player_video.stream = video
+		var rez_video = player_video.get_video_texture().get_size()
 		var ratio = rez_video.y/rez_video.x
-		fereastra_cuvant.get_node("VideoPlayer").rect_size = Vector2(rez_ecran.x, rez_ecran.x*ratio)
-		fereastra_cuvant.get_node("VideoPlayer").play()
+		player_video.margin_top = -rez_ecran.x*ratio/2
+		player_video.margin_bottom = player_video.margin_top*(-1)
+		player_video.play()
 		
 		fereastra_cuvant.get_node("ButonInapoi").connect("pressed", self, "stergere_video")
 
