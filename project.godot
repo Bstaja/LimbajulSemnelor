@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "RichTextEffect",
+"class": "ColorareLitera",
+"language": "GDScript",
+"path": "res://Tema/ColorareLitera.gd"
+} ]
+_global_script_class_icons={
+"ColorareLitera": ""
+}
+
 [application]
 
 config/name="LimbajulSemnelor"

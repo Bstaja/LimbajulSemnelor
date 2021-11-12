@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Tema/Tema.tres" type="Theme" id=1]
 [ext_resource path="res://Meniu/Cuvinte/TextDactileme.gd" type="Script" id=2]
 [ext_resource path="res://Meniu/Background.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Tema/dactileme.png" type="Texture" id=4]
+[ext_resource path="res://Tema/dactileme-vechi3.png" type="Texture" id=4]
+[ext_resource path="res://Tema/OpenDyslexic-Bold.otf" type="DynamicFontData" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "New Anim"
@@ -21,6 +22,10 @@ tracks/0/keys = {
 "method": "setare_litera_curenta"
 } ]
 }
+
+[sub_resource type="DynamicFont" id=2]
+size = 80
+font_data = ExtResource( 5 )
 
 [node name="TextDactileme" type="Control"]
 anchor_right = 1.0
@@ -99,27 +104,50 @@ text = " > "
 "anims/New Anim" = SubResource( 1 )
 
 [node name="Dactileme" type="Sprite" parent="."]
-position = Vector2( 400, 500 )
-scale = Vector2( 2.47889, 2.47889 )
+position = Vector2( 300, 600 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 hframes = 6
 vframes = 6
 
 [node name="LiteraCurenta" type="Panel" parent="."]
-anchor_top = 0.8
+anchor_top = 0.65
 anchor_right = 1.0
 anchor_bottom = 0.9
-
-[node name="Text" type="Label" parent="LiteraCurenta"]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -39.0
-margin_bottom = 39.0
-align = 1
-valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HSplitContainer" type="HBoxContainer" parent="LiteraCurenta"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -59.0
+margin_bottom = 59.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LiteraPrecedenta" type="Button" parent="LiteraCurenta/HSplitContainer"]
+margin_right = 76.0
+margin_bottom = 118.0
+text = " < "
+
+[node name="Text" type="RichTextLabel" parent="LiteraCurenta/HSplitContainer"]
+margin_left = 80.0
+margin_right = 944.0
+margin_bottom = 118.0
+size_flags_horizontal = 3
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="LiteraUrmatoare" type="Button" parent="LiteraCurenta/HSplitContainer"]
+margin_left = 948.0
+margin_right = 1024.0
+margin_bottom = 118.0
+text = " > "
+
 [connection signal="pressed" from="CasetaText/HSplitContainer/Buton" to="." method="_on_Buton_pressed"]
+[connection signal="pressed" from="LiteraCurenta/HSplitContainer/LiteraPrecedenta" to="." method="_on_LiteraPrecedenta_pressed"]
+[connection signal="pressed" from="LiteraCurenta/HSplitContainer/LiteraUrmatoare" to="." method="_on_LiteraUrmatoare_pressed"]
