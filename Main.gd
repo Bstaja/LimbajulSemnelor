@@ -15,7 +15,8 @@ var btn_denumiri = {
 		"Roșu",
 	],
 	"Transport":[
-		"Mașină"
+		"Mașină",
+		"Avion",
 	],
 }
 
@@ -31,7 +32,8 @@ var videoclipuri = {
 			"Roșu":"res://ResurseVideo/Culori/rosu.webm",
 		},
 		"Transport":{
-			"Mașină":"res://ResurseVideo/Transport/masina.webm"
+			"Mașină":"res://ResurseVideo/Transport/masina.webm",
+			"Avion":"res://ResurseVideo/Transport/avion.webm",
 		},
 	}
 
