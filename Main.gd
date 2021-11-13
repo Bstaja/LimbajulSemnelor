@@ -3,7 +3,7 @@ extends Control
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
 var btn_denumiri = {
 	"meniu": ["Cuvinte", "Expresii","Formare propoziții", "Text->dactileme", "Setări aplicație", "Ieșire"],
-	"categorii": ["Animale", "Culori", "Mijloace de transport","Emoți","Verbe uzuale"],
+	"categorii": ["Animale", "Culori", "Mijloace de\ntransport", "Emoții","Verbe\nuzuale"],
 	"Animale": [
 		"Câine",
 		"Papagal",
@@ -27,7 +27,7 @@ var btn_denumiri = {
 		"Galben",
 		"Roșu",
 	],
-	"Mijloace de transport":[
+	"Mijloace de\ntransport":[
 		"Mașină",
 		"Avion",
 		"Autobuz",
@@ -44,7 +44,7 @@ var btn_denumiri = {
 		"Căruţă",
 		"Automobil",
 	],
-	"Emoți":[
+	"Emoții":[
 		"Vesel",
 		"Trist",
 		"Supărat",
@@ -56,7 +56,7 @@ var btn_denumiri = {
 		"Dezamăgit",
 		"Anxietate"
 	],
-	"Verbe uzuale":[
+	"Verbe\nuzuale":[
 		"a privi",
 		"a scrie",
 		"a citi",
@@ -114,10 +114,10 @@ var videoclipuri = {
 			"Vapor":"res://ResurseVideo/Transport/vapor.webm",
 			"Trăsură":"res://ResurseVideo/Transport/trasura.webm",
 			"Elicopter":"res://ResurseVideo/Transport/elicopter.webm",
-			"Căruă":"res://ResurseVideo/Transport/caruta.webm",
+			"Căruță":"res://ResurseVideo/Transport/caruta.webm",
 			"Automobil":"res://ResurseVideo/Transport/automobil.webm",
 		},
-		"Emoți":{
+		"Emoții":{
 			"Vesel":"res://ResurseVideo/Emoti/vesel.webm",
 			"Trist":"res://ResurseVideo/Emoti/trist.webm",
 			"Supărat":"res://ResurseVideo/Emoti/suparat.webm",
@@ -216,8 +216,12 @@ func creare_categorii_cuvinte():
 	#Creearea butoanelor pt categorii
 	for btn in btn_denumiri["categorii"]:
 		var b = Button.new()
+		var b_text = Label.new()
 		lista.add_child(b)
-		b.text = btn
+		b.add_child(b_text)
+		b_text.text = btn
+		b_text.set_anchors_and_margins_preset(Control.PRESET_CENTER)
+		b_text.align = Label.ALIGN_CENTER
 		b.size_flags_horizontal = SIZE_EXPAND_FILL
 		b.size_flags_vertical = SIZE_EXPAND_FILL
 		btn_categorii.append(b)
@@ -243,7 +247,7 @@ func creare_lista_cuvinte(tip):
 		var categorie = load("res://Meniu/Cuvinte/Categorie.tscn")
 		categorie = categorie.instance()
 		add_child(categorie)
-		categorie.get_node("Titlu/Text").text = tip
+		categorie.get_node("Titlu/Text").text = tip.replace("\n", " ")
 		
 		var lista = categorie.get_node("ListaCuvinte/VBoxContainer")
 		
