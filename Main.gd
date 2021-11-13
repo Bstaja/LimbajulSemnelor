@@ -17,6 +17,11 @@ var btn_denumiri = {
 	"Transport":[
 		"Mașină",
 		"Avion",
+		"Autobuz",
+		"Barca",
+		"Bicicleta",
+		"Motocicleta",
+		"Tractor"
 	],
 }
 
@@ -34,6 +39,11 @@ var videoclipuri = {
 		"Transport":{
 			"Mașină":"res://ResurseVideo/Transport/masina.webm",
 			"Avion":"res://ResurseVideo/Transport/avion.webm",
+			"Autobuz":"res://ResurseVideo/Transport/autobuz.webm",
+			"Barca":"res://ResurseVideo/Transport/barca.webm",
+			"Bicicleta":"res://ResurseVideo/Transport/bicicleta.webm",
+			"Motocicleta":"res://ResurseVideo/Transport/motocicleta.webm",
+			"Tractor":"res://ResurseVideo/Transport/tractor.webm",
 		},
 	}
 
