@@ -3,7 +3,7 @@ extends Control
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
 var btn_denumiri = {
 	"meniu": ["Cuvinte", "Expresii","Formare propoziții", "Text->dactileme", "Setări aplicație", "Ieșire"],
-	"categorii": ["Animale", "Culori", "test", "test2", "blabla", "Transport"],
+	"categorii": ["Animale", "Culori", "Transport"],
 	"Animale": [
 		"Câine",
 		"Papagal",
@@ -15,7 +15,7 @@ var btn_denumiri = {
 		"Roșu",
 	],
 	"Transport":[
-		"Masina"
+		"Mașină"
 	],
 }
 
@@ -31,7 +31,7 @@ var videoclipuri = {
 			"Roșu":"res://ResurseVideo/Culori/rosu.webm",
 		},
 		"Transport":{
-			"Masina":"res://ResurseVideo/Transport/masina.webm"
+			"Mașină":"res://ResurseVideo/Transport/masina.webm"
 		},
 	}
 
