@@ -21,7 +21,9 @@ var btn_denumiri = {
 		"Barca",
 		"Bicicleta",
 		"Motocicleta",
-		"Tractor"
+		"Tractor",
+		"Tramvai",
+		"Tren",
 	],
 }
 
@@ -44,6 +46,8 @@ var videoclipuri = {
 			"Bicicleta":"res://ResurseVideo/Transport/bicicleta.webm",
 			"Motocicleta":"res://ResurseVideo/Transport/motocicleta.webm",
 			"Tractor":"res://ResurseVideo/Transport/tractor.webm",
+			"Tramvai":"res://ResurseVideo/Transport/tramvai.webm",
+			"Tren":"res://ResurseVideo/Transport/tren.webm",
 		},
 	}
 
