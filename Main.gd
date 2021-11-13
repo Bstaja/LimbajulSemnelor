@@ -3,14 +3,26 @@ extends Control
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
 var btn_denumiri = {
 	"meniu": ["Cuvinte", "Expresii","Formare propoziții", "Text->dactileme", "Setări aplicație", "Ieșire"],
-	"categorii": ["Animale", "Culori", "Transport"],
+	"categorii": ["Animale", "Culori", "Transport","Emoți"],
+	"subcategori":["Domestice", "Salbatice"],
 	"Animale": [
 		"Câine",
-		"Gaina",
 		"Papagal",
-		"Pisică"
+		"Gaină",
+		"Pisică",
+		"Capră",
+		"Oaie",
+		"Porc",
+		"Vacă",
+		"Taur",
+		"Arici",
+		"Caprioară",
+		"Cerb",
+		"Lup",
+		"Vulpe",
+		"Furnici",
+		"Gândac"
 		],
-	
 	"Culori": [
 		"Albastru",
 		"Galben",
@@ -27,14 +39,29 @@ var btn_denumiri = {
 		"Tramvai",
 		"Tren",
 	],
+	"Emoți":[
+		
+	],
 }
 
 var videoclipuri = {
 		"Animale": {
 			"Câine":"res://ResurseVideo/Animale/caine.webm",
-			"Gaina":"res://ResurseVideo/Animale/gaina.webm",
+			"Gaină":"res://ResurseVideo/Animale/gaina.webm",
 			"Papagal":"res://ResurseVideo/Animale/papagal.webm",
 			"Pisică":"res://ResurseVideo/Animale/pisica.webm",
+			"Capră":"res://ResurseVideo/Animale/capra.webm",
+			"Oaie":"res://ResurseVideo/Animale/oaie.webm",
+			"Porc":"res://ResurseVideo/Animale/porc.webm",
+			"Vacă":"res://ResurseVideo/Animale/vaca.webm",
+			"Taur":"res://ResurseVideo/Animale/taur.webm",
+			"Arici":"res://ResurseVideo/Animale/arici.webm",
+			"Caprioară":"res://ResurseVideo/Animale/caprioara.webm",
+			"Cerb":"res://ResurseVideo/Animale/cerb.webm",
+			"Lup":"res://ResurseVideo/Animale/lup.webm",
+			"Vulpe":"res://ResurseVideo/Animale/vulpe.webm",
+			"Furnici":"res://ResurseVideo/Animale/furnici.webm",
+			"Gândac":"res://ResurseVideo/Animale/gandac.webm",
 		},
 		"Culori": {
 			"Albastru":"res://ResurseVideo/Culori/albastru.webm",
@@ -52,6 +79,9 @@ var videoclipuri = {
 			"Tramvai":"res://ResurseVideo/Transport/tramvai.webm",
 			"Tren":"res://ResurseVideo/Transport/tren.webm",
 		},
+		"Emoți":{
+			
+		}
 	}
 
 #Enumerator pt butoanele din meniul principal (trebuie puse in ordinea in care au fost scrise mai sus)
