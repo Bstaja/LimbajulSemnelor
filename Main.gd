@@ -3,7 +3,7 @@ extends Control
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
 var btn_denumiri = {
 	"meniu": ["Cuvinte", "Expresii","Formare propoziții", "Text->dactileme", "Setări aplicație", "Ieșire"],
-	"categorii": ["Animale", "Culori", "Mijloace de transport"],
+	"categorii": ["Animale", "Culori", "Mijloace de transport","Verbe uzuale"],
 	"Animale": [
 		"Câine",
 		"Gaina",
@@ -30,6 +30,16 @@ var btn_denumiri = {
 		"Vapor",
 		"Trasura",
 		"Elicopter",
+		"Caruta",
+		"Automobil",
+	],
+	"Verbe uzuale":[
+		"a privi",
+		"a scrie",
+		"a citi",
+		"a arata",
+		"a spune",
+		
 	],
 }
 
@@ -59,8 +69,18 @@ var videoclipuri = {
 			"Vapor":"res://ResurseVideo/Transport/vapor.webm",
 			"Trasura":"res://ResurseVideo/Transport/trasura.webm",
 			"Elicopter":"res://ResurseVideo/Transport/elicopter.webm",
-			
-		},
+			"Caruta":"res://ResurseVideo/Transport/caruta.webm",
+			"Automobil":"res://ResurseVideo/Transport/automobil.webm",
+			},
+			"Verbe uzuale":{
+			"a privi":"res://ResurseVideo/Verbe uzuale/privi.webm",
+			"a scrie":"res://ResurseVideo/Verbe uzuale/scrie.webm",
+			"a citi":"res://ResurseVideo/Verbe uzuale/citi.webm",
+			"a arata":"res://ResurseVideo/Verbe uzuale/arata.webm",
+			"a spune":"res://ResurseVideo/Verbe uzuale/spune.webm",
+				
+				
+			},
 	}
 
 #Enumerator pt butoanele din meniul principal (trebuie puse in ordinea in care au fost scrise mai sus)
