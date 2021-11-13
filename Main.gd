@@ -3,7 +3,7 @@ extends Control
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
 var btn_denumiri = {
 	"meniu": ["Cuvinte", "Expresii","Formare propoziții", "Text->dactileme", "Setări aplicație", "Ieșire"],
-	"categorii": ["Animale", "Culori", "Transport"],
+	"categorii": ["Animale", "Culori", "Mijloace de transport"],
 	"Animale": [
 		"Câine",
 		"Gaina",
@@ -16,7 +16,7 @@ var btn_denumiri = {
 		"Galben",
 		"Roșu",
 	],
-	"Transport":[
+	"Mijloace de transport":[
 		"Mașină",
 		"Avion",
 		"Autobuz",
@@ -26,6 +26,10 @@ var btn_denumiri = {
 		"Tractor",
 		"Tramvai",
 		"Tren",
+		"Vas",
+		"Vapor",
+		"Trasura",
+		"Elicopter",
 	],
 }
 
@@ -41,7 +45,7 @@ var videoclipuri = {
 			"Galben":"res://ResurseVideo/Culori/galben.webm",
 			"Roșu":"res://ResurseVideo/Culori/rosu.webm",
 		},
-		"Transport":{
+		"Mijloace de transport":{
 			"Mașină":"res://ResurseVideo/Transport/masina.webm",
 			"Avion":"res://ResurseVideo/Transport/avion.webm",
 			"Autobuz":"res://ResurseVideo/Transport/autobuz.webm",
@@ -51,6 +55,11 @@ var videoclipuri = {
 			"Tractor":"res://ResurseVideo/Transport/tractor.webm",
 			"Tramvai":"res://ResurseVideo/Transport/tramvai.webm",
 			"Tren":"res://ResurseVideo/Transport/tren.webm",
+			"Vas":"res://ResurseVideo/Transport/vas.webm",
+			"Vapor":"res://ResurseVideo/Transport/vapor.webm",
+			"Trasura":"res://ResurseVideo/Transport/trasura.webm",
+			"Elicopter":"res://ResurseVideo/Transport/elicopter.webm",
+			
 		},
 	}
 
