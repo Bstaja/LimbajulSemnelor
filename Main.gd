@@ -3,8 +3,7 @@ extends Control
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
 var btn_denumiri = {
 	"meniu": ["Cuvinte", "Expresii","Formare propoziții", "Text->dactileme", "Setări aplicație", "Ieșire"],
-	"categorii": ["Animale", "Culori", "Transport","Emoți"],
-	"subcategori":["Domestice", "Salbatice"],
+	"categorii": ["Animale", "Culori", "Mijloace de transport","Verbe uzuale","Emoți"],
 	"Animale": [
 		"Câine",
 		"Papagal",
@@ -28,7 +27,7 @@ var btn_denumiri = {
 		"Galben",
 		"Roșu",
 	],
-	"Transport":[
+	"Mijloace de transport":[
 		"Mașină",
 		"Avion",
 		"Autobuz",
@@ -38,9 +37,32 @@ var btn_denumiri = {
 		"Tractor",
 		"Tramvai",
 		"Tren",
+		"Vas",
+		"Vapor",
+		"Trasura",
+		"Elicopter",
+		"Caruta",
+		"Automobil",
+	],
+	"Verbe uzuale":[
+		"a privi",
+		"a scrie",
+		"a citi",
+		"a arata",
+		"a spune",
+		
 	],
 	"Emoți":[
-		
+		"Vesel",
+		"Trist",
+		"Supărat",
+		"Indrăgostit",
+		"Emoționat",
+		"Uimire",
+		"Mirare",
+		"Au durere",
+		"Dezamăgit",
+		"Anxietate"
 	],
 }
 
@@ -68,7 +90,7 @@ var videoclipuri = {
 			"Galben":"res://ResurseVideo/Culori/galben.webm",
 			"Roșu":"res://ResurseVideo/Culori/rosu.webm",
 		},
-		"Transport":{
+		"Mijloace de transport":{
 			"Mașină":"res://ResurseVideo/Transport/masina.webm",
 			"Avion":"res://ResurseVideo/Transport/avion.webm",
 			"Autobuz":"res://ResurseVideo/Transport/autobuz.webm",
@@ -78,10 +100,32 @@ var videoclipuri = {
 			"Tractor":"res://ResurseVideo/Transport/tractor.webm",
 			"Tramvai":"res://ResurseVideo/Transport/tramvai.webm",
 			"Tren":"res://ResurseVideo/Transport/tren.webm",
+			"Vas":"res://ResurseVideo/Transport/vas.webm",
+			"Vapor":"res://ResurseVideo/Transport/vapor.webm",
+			"Trasura":"res://ResurseVideo/Transport/trasura.webm",
+			"Elicopter":"res://ResurseVideo/Transport/elicopter.webm",
+			"Caruta":"res://ResurseVideo/Transport/caruta.webm",
+			"Automobil":"res://ResurseVideo/Transport/automobil.webm",
+		},
+		"Verbe uzuale":{
+			"a privi":"res://ResurseVideo/Verbe uzuale/privi.webm",
+			"a scrie":"res://ResurseVideo/Verbe uzuale/scrie.webm",
+			"a citi":"res://ResurseVideo/Verbe uzuale/citi.webm",
+			"a arata":"res://ResurseVideo/Verbe uzuale/arata.webm",
+			"a spune":"res://ResurseVideo/Verbe uzuale/spune.webm",
 		},
 		"Emoți":{
-			
-		}
+			"Vesel":"res://ResurseVideo/Emoti/vesel.webm",
+			"Trist":"res://ResurseVideo/Emoti/trist.webm",
+			"Supărat":"res://ResurseVideo/Emoti/suparat.webm",
+			"Indrăgostit":"res://ResurseVideo/Emoti/indragostit.webm",
+			"Emoționat":"res://ResurseVideo/Emoti/emotionat.webm",
+			"Uimire":"res://ResurseVideo/Emoti/uimire.webm",
+			"Mirare":"res://ResurseVideo/Emoti/mirare.webm",
+			"Au durere":"res://ResurseVideo/Emoti/au-durere-2.webm",
+			"Dezamăgit":"res://ResurseVideo/Emoti/dezamagit-1.webm",
+			"Anxietate":"res://ResurseVideo/Emoti/anxietate.webm",			
+		},
 	}
 
 #Enumerator pt butoanele din meniul principal (trebuie puse in ordinea in care au fost scrise mai sus)
