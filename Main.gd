@@ -6,9 +6,11 @@ var btn_denumiri = {
 	"categorii": ["Animale", "Culori", "Transport"],
 	"Animale": [
 		"Câine",
+		"Gaina",
 		"Papagal",
-		"Pisică",
-	],
+		"Pisică"
+		],
+	
 	"Culori": [
 		"Albastru",
 		"Galben",
@@ -22,6 +24,7 @@ var btn_denumiri = {
 var videoclipuri = {
 		"Animale": {
 			"Câine":"res://ResurseVideo/Animale/caine.webm",
+			"Gaina":"res://ResurseVideo/Animale/gaina.webm",
 			"Papagal":"res://ResurseVideo/Animale/papagal.webm",
 			"Pisică":"res://ResurseVideo/Animale/pisica.webm",
 		},
