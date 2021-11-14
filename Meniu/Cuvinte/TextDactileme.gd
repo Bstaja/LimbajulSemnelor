@@ -46,7 +46,6 @@ func _on_Buton_pressed():
 	$AnimationPlayer.seek(0.0)
 
 func setare_litera_curenta():
-	var l = alfabet[$Dactileme.frame]
 	var index = int($AnimationPlayer.current_animation_position/viteza_normala)+1
 	var text_procesat = text
 	text_procesat = text_procesat.insert(index-1, "0")
