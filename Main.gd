@@ -172,6 +172,10 @@ var tema = load("res://Tema/Tema.tres")
 func _ready():
 	creare_meniu_principal()
 	creare_categorii_cuvinte()
+	
+	#Sortare liste in ordine aflabetica
+	for i in btn_denumiri["categorii"]:
+		btn_denumiri[i].sort()
 
 func creare_meniu_principal():
 	#referinta lista meniu
