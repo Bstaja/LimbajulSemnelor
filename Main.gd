@@ -23,9 +23,18 @@ var btn_denumiri = {
 		"Gândac"
 	],
 	"Culori": [
+		"Alb",
 		"Albastru",
 		"Galben",
+		"Gri",
+		"Maro",
+		"Mov",
+		"Negru",
+		"Portocaliu",
 		"Roșu",
+		"Roz",
+		"Verde",
+		"Violet",
 	],
 	"Mijloace de\ntransport":[
 		"Mașină",
@@ -96,9 +105,18 @@ var videoclipuri = {
 		"Gândac":"res://ResurseVideo/Animale/gandac.webm",
 	},
 	"Culori": {
+		"Alb":"res://ResurseVideo/Culori/alb.webm",
 		"Albastru":"res://ResurseVideo/Culori/albastru.webm",
 		"Galben":"res://ResurseVideo/Culori/galben.webm",
+		"Gri":"res://ResurseVideo/Culori/gri.webm",
+		"Maro":"res://ResurseVideo/Culori/maro.webm",
+		"Mov":"res://ResurseVideo/Culori/mov.webm",
+		"Negru":"res://ResurseVideo/Culori/negru.webm",
+		"Portocaliu":"res://ResurseVideo/Culori/portocaliu.webm",
 		"Roșu":"res://ResurseVideo/Culori/rosu.webm",
+		"Roz":"res://ResurseVideo/Culori/roz.webm",
+		"Verde":"res://ResurseVideo/Culori/verde.webm",
+		"Violet":"res://ResurseVideo/Culori/violet.webm",
 	},
 	"Mijloace de\ntransport":{
 		"Mașină":"res://ResurseVideo/Transport/masina.webm",
