@@ -254,6 +254,7 @@ func creare_lista_cuvinte(tip):
 		for btn in btn_denumiri[tip]:
 			var b = Button.new()
 			lista.add_child(b)
+			b.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			b.text = btn
 			b.size_flags_horizontal = SIZE_EXPAND_FILL
 			b.connect("pressed", self, "creare_video", [tip, btn])
