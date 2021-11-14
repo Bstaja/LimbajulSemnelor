@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Tema/Tema.tres" type="Theme" id=1]
 [ext_resource path="res://Meniu/Cuvinte/TextDactileme.gd" type="Script" id=2]
 [ext_resource path="res://Meniu/Background.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Tema/dactileme-vechi3.png" type="Texture" id=4]
 [ext_resource path="res://Tema/OpenDyslexic-Bold.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://Meniu/ButonInapoi.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "New Anim"
@@ -58,15 +59,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButonInapoi" type="Button" parent="."]
-anchor_top = 0.9
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_vertical = 0
-text = "Înapoi"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ButonInapoi" parent="." instance=ExtResource( 6 )]
+margin_top = -58.0
 
 [node name="CasetaText" type="Panel" parent="."]
 anchor_top = 0.1
