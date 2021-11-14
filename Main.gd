@@ -196,6 +196,7 @@ func creare_meniu_principal():
 	#Conectarea butoanelor din meniu la functii
 	btn_meniu[meniu.CUVINTE].connect("pressed", self, "afisare_categorii_cuvinte")
 	btn_meniu[meniu.TEXT_DACTILEME].connect("pressed", self, "afisare_text_dactil")
+	btn_meniu[meniu.IESIRE].connect("pressed", self, "inchidere_aplicatie")
 
 func afisare_meniu_principal():
 	$MeniuPrincipal.visible = true
@@ -306,3 +307,6 @@ func afisare_text_dactil():
 func ascunde_text_dactil():
 	get_node("MeniuPrincipal").visible = true
 	get_node("TextDactileme").queue_free()
+
+func inchidere_aplicatie():
+	get_tree().quit()
