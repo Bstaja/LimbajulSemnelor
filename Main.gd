@@ -3,7 +3,7 @@ extends Control
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
 var btn_denumiri = {
 	"meniu": ["Cuvinte", "Expresii","Formare propoziții", "Text->dactileme", "Setări aplicație", "Ieșire"],
-	"categorii": ["Animale", "Culori", "Mijloace de\ntransport", "Emoții","Verbe\nuzuale","Corpul omenesc"],
+	"categorii": ["Animale", "Culori", "Mijloace de\ntransport", "Emoții","Verbe\nuzuale","Corpul omenesc","Fructe"],
 	"Animale": [
 		"Câine",
 		"Papagal",
@@ -113,6 +113,23 @@ var btn_denumiri = {
 		"gambe",
 		"abdomen",
 		"sprânceană",
+	],
+	"Fructe":[
+		"măr",
+		"pară",
+		"prună",
+		"portocală",
+		"banană",
+		"gutuie",
+		"lămâie",
+		"ananas",
+		"zmeură",
+		"strugure",
+		"pepene",
+		"nucă",
+		"kiwi",
+		"cireșe",
+		
 	],
 	
 }
@@ -228,6 +245,22 @@ var videoclipuri = {
 		"abdomen":"res://ResurseVideo/Corpul omenesc/abdomen.webm",
 		"sprânceană":"res://ResurseVideo/Corpul omenesc/sprancean.webm",
 	},
+	"Fructe":{
+		"măr":"res://ResurseVideo/Fructe/mar.webm",
+		"pară":"res://ResurseVideo/Fructe/pom-2.webm",
+		"prună":"res://ResurseVideo/Fructe/prune.webm",
+		"portocală":"res://ResurseVideo/Fructe/portocala.webm",
+		"banană":"res://ResurseVideo/Fructe/banana.webm",
+		"gutuie":"res://ResurseVideo/Fructe/gutuie.webm",
+		"lămâie":"res://ResurseVideo/Fructe/lamaie-3.webm",
+		"ananas":"res://ResurseVideo/Fructe/ananas.webm",
+		"zmeură":"res://ResurseVideo/Fructe/zmeura.webm",
+		"strugure":"res://ResurseVideo/Fructe/struguri.webm",
+		"pepene":"res://ResurseVideo/Fructe/pepene.webm",
+		"nucă":"res://ResurseVideo/Fructe/nuca-2.webm",
+		"kiwi":"res://ResurseVideo/Fructe/kiwi.webm",
+		"cireșe":"res://ResurseVideo/Fructe/cirese.webm",
+	},
 }
 
 #Enumerator pt butoanele din meniul principal (trebuie puse in ordinea in care au fost scrise mai sus)
@@ -246,7 +279,7 @@ var btn_meniu = []
 #Vector care contine butoanele din meniul cu categorii
 var btn_categorii = []
 
-#incarcare tema din folderul Tema
+#incarcare tema din f,olderul Tema
 var tema = load("res://Tema/Tema.tres")
 
 func _ready():
