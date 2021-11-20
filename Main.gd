@@ -3,7 +3,7 @@ extends Control
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
 var btn_denumiri = {
 	"meniu": ["Cuvinte", "Expresii","Formare propoziții", "Text->dactileme", "Setări aplicație", "Ieșire"],
-	"categorii": ["Animale", "Culori", "Mijloace de\ntransport", "Emoții","Verbe\nuzuale","Corpul omenesc","Fructe","Legume"],
+	"categorii": ["Animale", "Culori", "Mijloace de\ntransport", "Emoții","Verbe\nuzuale","Corpul omenesc","Fructe","Legume","Orașe din România"],
 	"Animale": [
 		"Câine",
 		"Papagal",
@@ -145,6 +145,23 @@ var btn_denumiri = {
 		"ridiche",
 		"porumb",
 		"fasole",
+	],
+	"Orașe din România":[
+		"Brașov",
+		"București",
+		"Iași",
+		"Timișoara",
+		"Cluj Napoca",
+		"Galați",
+		"Constanța",
+		"Craiova",
+		"Ploiești",
+		"Oradea",
+		"Brăila",
+		"Bacău",
+		
+		
+		
 	],
 	
 }
@@ -291,6 +308,22 @@ var videoclipuri = {
 		"ridiche":"res://ResurseVideo/Legume/ridiche.webm",
 		"porumb":"res://ResurseVideo/Legume/porumb.webm",
 		"fasole":"res://ResurseVideo/Legume/fasole-2.webm",
+	},
+	"Orașe din România":{
+		"Brașov":"res://ResurseVideo/Orase din Romania/Brasov.webm",
+		"București":"res://ResurseVideo/Orase din Romania/Bucuresti.webm",
+		"Iași":"res://ResurseVideo/Orase din Romania/Iasi.webm",
+		"Timișoara":"res://ResurseVideo/Orase din Romania/Timisoara.webm",
+		"Cluj Napoca":"res://ResurseVideo/Orase din Romania/Cluj-Napoca.webm",
+		"Galați":"res://ResurseVideo/Orase din Romania/Galati.webm",
+		"Constanța":"res://ResurseVideo/Orase din Romania/Constanta.webm",
+		"Craiova":"res://ResurseVideo/Orase din Romania/Craiova.webm",
+		"Ploiești":"res://ResurseVideo/Orase din Romania/Ploiesti.webm",
+		"Oradea":"res://ResurseVideo/Orase din Romania/Oradea.webm",
+		"Brăila":"res://ResurseVideo/Orase din Romania/Braila.webm",
+		"Bacău":"res://ResurseVideo/Orase din Romania/Bacau.webm",
+		
+		
 	},
 }
 
