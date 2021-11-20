@@ -3,7 +3,7 @@ extends Control
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
 var btn_denumiri = {
 	"meniu": ["Cuvinte", "Expresii","Formare propoziții", "Text->dactileme", "Setări aplicație", "Ieșire"],
-	"categorii": ["Animale", "Culori", "Mijloace de\ntransport", "Emoții","Verbe\nuzuale","Corpul omenesc","Fructe"],
+	"categorii": ["Animale", "Culori", "Mijloace de\ntransport", "Emoții","Verbe\nuzuale","Corpul omenesc","Fructe","Legume"],
 	"Animale": [
 		"Câine",
 		"Papagal",
@@ -129,7 +129,22 @@ var btn_denumiri = {
 		"nucă",
 		"kiwi",
 		"cireșe",
-		
+		"piersică"
+	],
+	"Legume":[
+		"roșie",
+		"castravete",
+		"cartof",
+		"dovlecel",
+		"ardei",
+		"ciupercă",
+		"salată",
+		"morcov",
+		"ceapă",
+		"varză",
+		"ridiche",
+		"porumb",
+		"fasole",
 	],
 	
 }
@@ -260,6 +275,22 @@ var videoclipuri = {
 		"nucă":"res://ResurseVideo/Fructe/nuca-2.webm",
 		"kiwi":"res://ResurseVideo/Fructe/kiwi.webm",
 		"cireșe":"res://ResurseVideo/Fructe/cirese.webm",
+		"piersică":"res://ResurseVideo/Fructe/piersica1.webm",
+	},
+	"Legume":{
+		"roșie":"res://ResurseVideo/Legume/rosie-1.webm",
+		"castravete":"res://ResurseVideo/Legume/castravete.webm",
+		"cartof":"res://ResurseVideo/Legume/cartofi.webm",
+		"dovlecel":"res://ResurseVideo/Legume/dovlecel.webm",
+		"ardei":"res://ResurseVideo/Legume/ardei.webm",
+		"ciupercă":"res://ResurseVideo/Legume/ciuperca.webm",
+		"salată":"res://ResurseVideo/Legume/salata.webm",
+		"morcov":"res://ResurseVideo/Legume/morcov.webm",
+		"ceapă":"res://ResurseVideo/Legume/ceapa.webm",
+		"varză":"res://ResurseVideo/Legume/varza.webm",
+		"ridiche":"res://ResurseVideo/Legume/ridiche.webm",
+		"porumb":"res://ResurseVideo/Legume/porumb.webm",
+		"fasole":"res://ResurseVideo/Legume/fasole-2.webm",
 	},
 }
 
