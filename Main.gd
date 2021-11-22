@@ -3,7 +3,7 @@ extends Control
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
 var btn_denumiri = {
 	"meniu": ["Cuvinte", "Expresii","Formare propoziții", "Text->dactileme", "Setări aplicație", "Ieșire"],
-	"categorii": ["Animale", "Culori", "Mijloace de\ntransport", "Emoții","Verbe\nuzuale","Corpul omenesc","Fructe","Legume","Orașe din România"],
+	"categorii": ["Animale", "Culori", "Mijloace de\ntransport", "Emoții","Verbe\nuzuale","Corpul\nomenesc","Fructe","Legume","Orașe din\nRomânia"],
 	"Animale": [
 		"Câine",
 		"Papagal",
@@ -82,7 +82,7 @@ var btn_denumiri = {
 		"a construi",
 		"a mulţumi",
 	],
-	"Corpul omenesc":[
+	"Corpul\nomenesc":[
 		"barbă",
 		"buză",
 		"cap",
@@ -146,7 +146,7 @@ var btn_denumiri = {
 		"porumb",
 		"fasole",
 	],
-	"Orașe din România":[
+	"Orașe din\nRomânia":[
 		"Brașov",
 		"București",
 		"Iași",
@@ -270,7 +270,7 @@ var videoclipuri = {
 		"a construi":"res://ResurseVideo/Verbe uzuale/construi.webm",
 		"a mulţumi":"res://ResurseVideo/Verbe uzuale/multumesc.webm",
 	},
-	"Corpul omenesc":{
+	"Corpul\nomenesc":{
 		"barbă":"res://ResurseVideo/Corpul omenesc/barba.webm",
 		"buză":"res://ResurseVideo/Corpul omenesc/buze.webm",
 		"cap":"res://ResurseVideo/Corpul omenesc/cap.webm",
@@ -334,7 +334,7 @@ var videoclipuri = {
 		"porumb":"res://ResurseVideo/Legume/porumb.webm",
 		"fasole":"res://ResurseVideo/Legume/fasole-2.webm",
 	},
-	"Orașe din România":{
+	"Orașe din\nRomânia":{
 		"Brașov":"res://ResurseVideo/Orase din Romania/Brasov.webm",
 		"București":"res://ResurseVideo/Orase din Romania/Bucuresti.webm",
 		"Iași":"res://ResurseVideo/Orase din Romania/Iasi.webm",
