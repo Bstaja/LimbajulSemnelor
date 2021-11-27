@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Dictionar/cuvinte.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nume_categorie = "Orașe din\\nRomânia"
+folder = "Orase din Romania"
+cuvinte = PoolStringArray( "Brașov", "București", "Iași", "Timișoara", "Cluj Napoca", "Galați", "Constanța", "Craiova", "Ploiești", "Oradea", "Brăila", "Bacău", "Pitești", "Sibiu", "Târgu Mureș", "Baia Mare", "Buzău", "Suceava", "Botoșani", "Satu Mare", "Râmnicu Vâlcea", "Piatra Neamț", "Târgu Jiu", "Târgoviște", "Focșani", "Bistrița", "Tulcea", "Reșița", "Slatina", "Alba Iulia", "Giurgiu", "Deva", "Hunedoara", "Zalău", "Sfântu Gheorghe", "Bârlad", "Vaslui", "Miercurea Ciuc", "Făgăraș", "Sighișoara" )
+locatii = PoolStringArray( "Brasov", "Bucuresti", "Iasi", "Timisoara", "Cluj-Napoca", "Galati", "Constanta", "Craiova", "Ploiesti", "Oradea", "Braila", "Bacau", "Pitesti", "Sibiu", "Targu-Mures", "Baia-Mare", "Buzau", "Suceava", "Botosani", "Satu-Mare", "Ramnicu-Valcea", "Piatra-Neamt", "Tg-Jiu", "Targoviste", "Focsani", "Bistrita", "Tulcea", "Resita", "Slatina", "Alba-Iulia-ok", "Giurgiu", "Deva", "Hunedoara", "Zalau", "Sfantu-Gheorghe", "Barlad", "Vaslui", "Miercurea-Ciuc", "Fagaras", "Sighisoara" )

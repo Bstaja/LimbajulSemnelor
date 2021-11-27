@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Dictionar/cuvinte.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nume_categorie = "Culori"
+folder = "Culori"
+cuvinte = PoolStringArray( "Alb", "Albastiu", "Galben", "Gri", "Maro", "Mov", "Negru", "Portocaliu", "Roșu", "Roz", "Verde", "Violet" )
+locatii = PoolStringArray( "alb", "albastru", "galben", "gri", "maro", "mov", "negru", "portocaliu", "rosu", "roz", "verde", "violet" )

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Dictionar/cuvinte.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nume_categorie = "Mijloace de\\nTransport"
+folder = "Transport"
+cuvinte = PoolStringArray( "Mașină", "Avion", "Autobuz", "Barcă", "Bicicletă", "Motocicletă", "Tractor", "Tramvai", "Tren", "Vas", "Vapor", "Trăsură", "Elicopter", "Căruță", "Automobil" )
+locatii = PoolStringArray( "masina", "avion", "autobuz", "barca", "bicicleta", "motocicleta", "tractor", "tramvai", "tren", "vas", "vapor", "trasura", "elicopter", "caruta", "automobil" )

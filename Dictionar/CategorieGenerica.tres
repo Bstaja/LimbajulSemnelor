@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Dictionar/cuvinte.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nume_categorie = ""
+Folder = ""
+cuvinte = PoolStringArray(  )
+locatii = PoolStringArray(  )

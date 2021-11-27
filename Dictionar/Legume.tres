@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Dictionar/cuvinte.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nume_categorie = "Legume"
+folder = "Legume"
+cuvinte = PoolStringArray( "roșie", "castravete", "cartof", "dovlecel", "ardei", "ciupercă", "salată", "morcov", "ceapă", "varză", "ridiche", "porumb", "fasole" )
+locatii = PoolStringArray( "rosie-1", "castravete", "cartofi", "dovlecel", "ardei", "ciuperca", "salata", "morcov", "ceapa", "varza", "ridiche", "porumb", "fasole-2" )
