@@ -15,6 +15,7 @@ var dictionar = {
 	"Legume":"Legume",
 	"Orașe din\nRomânia":"orase-ro",
 	"Adjective \nuzuale":"adjective uzuale",
+	"Familie":"Familie",
 }
 
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
@@ -37,6 +38,7 @@ var btn_denumiri = {
 		"Legume",
 		"Orașe din\nRomânia",
 		"Adjective \nuzuale",
+		"Familie",
 	],
 }
 #	"Animale": [
