@@ -6,5 +6,5 @@
 script = ExtResource( 1 )
 nume_categorie = "Familie"
 folder = "Familie"
-cuvinte = PoolStringArray( "Mama", "Tata", "Bunic", "Frate", "Soră", "Mătușă", "Unchi", "Nepot", "Fiică", "Fiu", "Părinte", "Copil", "Familie" )
-locatii = PoolStringArray( "mama", "tata", "bunic", "frate", "sora", "matusa", "unchi", "nepot", "fiica", "fiu", "parinte", "copil", "familia" )
+cuvinte = PoolStringArray( "Mama", "Tata", "Bunic", "Frate", "Soră", "Mătușă", "Unchi", "Nepot", "Fiică", "Fiu", "Părinte", "Copil", "Familie", "Fată", "Băiat", "Bărbat", "Femeie" )
+locatii = PoolStringArray( "mama", "tata", "bunic", "frate", "sora", "matusa", "unchi", "nepot", "fiica", "fiu", "parinte", "copil", "familia", "fata", "baiat", "barbat", "femeie" )

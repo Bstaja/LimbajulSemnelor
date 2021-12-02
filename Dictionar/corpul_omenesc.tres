@@ -6,5 +6,5 @@
 script = ExtResource( 1 )
 nume_categorie = "Corpul\\nomenesc"
 folder = "Corpul omenesc"
-cuvinte = PoolStringArray( "barbă", "buză", "cap", "cot", "deget", "dinte", "față", "frunte", "gât", "gură", "limbă", "mână", "nas", "ochi", "os", "palmă", "păr", "piept", "picior", "spate", "sânge", "trup", "umăr", "unghie", "ureche", "braț", "buric", "gambe", "abdomen", "sprânceană" )
-locatii = PoolStringArray( "barba", "buze", "cap", "cot", "deget", "dinte", "fata", "frunte", "gat", "gura", "limba", "mana", "nas", "ochi", "os", "palma", "par", "piept", "picior", "spate", "sange", "trup", "umar", "unghi", "ureche", "brat", "buric", "gamba", "abdomen", "sprancean" )
+cuvinte = PoolStringArray( "barbă", "buză", "cap", "cot", "deget", "dinte", "față", "frunte", "gât", "gură", "limbă", "mână", "nas", "ochi", "os", "palmă", "păr", "piept", "picior", "spate", "sânge", "trup", "umăr", "unghie", "ureche", "braț", "buric", "gambe", "abdomen", "sprânceană", "falcă", "femur" )
+locatii = PoolStringArray( "barba", "buze", "cap", "cot", "deget", "dinte", "fata", "frunte", "gat", "gura", "limba", "mana", "nas", "ochi", "os", "palma", "par", "piept", "picior", "spate", "sange", "trup", "umar", "unghi", "ureche", "brat", "buric", "gamba", "abdomen", "sprancean", "falca", "femur" )
