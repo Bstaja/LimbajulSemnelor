@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Dictionar/cuvinte.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nume_categorie = "adjective uzuale"
+folder = "adjective uzuale"
+cuvinte = PoolStringArray( "Mare", "Mic", "Repede", "Încet", "Bun", "Rău", "Scump", "Ieftin", "Gros", "Subțire", "Îngust", "Larg", "Inteligent", "Ud", "Uscat", "Greu", "Ușor", "Tare", "Moale", "Superficial" )
+locatii = PoolStringArray( "mare", "mic", "repede", "incet", "bun", "rau", "scump-2", "ieftin", "gros", "subtire", "ingust", "larg", "inteligent", "ud", "uscat", "greu", "usor", "tare", "moale", "superficial" )
