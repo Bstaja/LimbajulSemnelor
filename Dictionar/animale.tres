@@ -7,4 +7,4 @@ script = ExtResource( 1 )
 nume_categorie = "Animale"
 folder = "Animale"
 cuvinte = PoolStringArray( "Câine", "Găină", "Papagal", "Pisică", "Capră", "Oaie", "Porc", "Vacă", "Taur", "Arici", "Căprioară", "Cerb", "Lup", "Vulpe", "Furnici", "Gândac" )
-locatii = PoolStringArray( "caine", "gaina", "papagal", "paisica", "capra", "oaie", "porc", "vaca", "taur", "arici", "caprioara", "cerb", "lup", "vulpe", "furnici", "gandac" )
+locatii = PoolStringArray( "caine", "gaina", "papagal", "pisica", "capra", "oaie", "porc", "vaca", "taur", "arici", "caprioara", "cerb", "lup", "vulpe", "furnici", "gandac" )
