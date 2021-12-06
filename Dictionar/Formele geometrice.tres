@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Dictionar/cuvinte.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nume_categorie = "Formele geometrice"
+folder = "Formele geometrice"
+cuvinte = PoolStringArray( "cerc", "dreapta", "dreptunghi", "hexagon", "hiperbola", "linie", "octogon", "paralelipiped", "patrat", "pentagon", "punct", "romb" )
+locatii = PoolStringArray( "cerc", "dreapta", "dreptunghi", "hexagon", "hiperbola", "linie", "octogon", "paralelipiped", "patrat", "pentagpon", "punct", "romb" )

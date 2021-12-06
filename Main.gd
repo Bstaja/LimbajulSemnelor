@@ -18,6 +18,7 @@ var dictionar = {
 	"Familie":"Familie",
 	"Zilele săptămânii":"Zilele săptămânii",
 	"Lunile anului":"Lunile anului",
+	"Formele geometrice":"Formele geometrice",
 }
 
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
@@ -43,6 +44,7 @@ var btn_denumiri = {
 		"Familie",
 		"Zilele săptămânii",
 		"Lunile anului",
+		"Formele geometrice",
 	],
 }
 #	"Animale": [
