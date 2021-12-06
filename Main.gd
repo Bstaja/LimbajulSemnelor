@@ -16,6 +16,7 @@ var dictionar = {
 	"Orașe din\nRomânia":"orase-ro",
 	"Adjective \nuzuale":"adjective uzuale",
 	"Familie":"Familie",
+	"Zilele săptămânii":"Zilele săptămânii",
 }
 
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
@@ -39,6 +40,7 @@ var btn_denumiri = {
 		"Orașe din\nRomânia",
 		"Adjective \nuzuale",
 		"Familie",
+		"Zilele săptămânii",
 	],
 }
 #	"Animale": [
