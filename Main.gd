@@ -19,6 +19,7 @@ var dictionar = {
 	"Zilele săptămânii":"Zilele săptămânii",
 	"Lunile anului":"Lunile anului",
 	"Formele geometrice":"Formele geometrice",
+	"Îmbrăcăminte":"Îmbrăcăminte",
 }
 
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
@@ -45,6 +46,7 @@ var btn_denumiri = {
 		"Zilele săptămânii",
 		"Lunile anului",
 		"Formele geometrice",
+		"Îmbrăcăminte",
 	],
 }
 #	"Animale": [
