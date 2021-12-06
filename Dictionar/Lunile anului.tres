@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Dictionar/cuvinte.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nume_categorie = "Lunile anului"
+folder = "Lunile anului"
+cuvinte = PoolStringArray( "Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie" )
+locatii = PoolStringArray( "Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie" )

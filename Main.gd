@@ -17,6 +17,7 @@ var dictionar = {
 	"Adjective \nuzuale":"adjective uzuale",
 	"Familie":"Familie",
 	"Zilele săptămânii":"Zilele săptămânii",
+	"Lunile anului":"Lunile anului",
 }
 
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
@@ -41,6 +42,7 @@ var btn_denumiri = {
 		"Adjective \nuzuale",
 		"Familie",
 		"Zilele săptămânii",
+		"Lunile anului",
 	],
 }
 #	"Animale": [

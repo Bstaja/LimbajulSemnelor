@@ -6,5 +6,5 @@
 script = ExtResource( 1 )
 nume_categorie = "Zilele săptămânii"
 folder = "Zilele săptămânii"
-cuvinte = PoolStringArray( "Luni", "Marţi", "Miercuri", "Joi", "Vineri", "Sâmbătă", "Duminică" )
-locatii = PoolStringArray( "Luni", "Marti", "Miercuri", "Joi", "Vineri", "Sambata", "Duminica" )
+cuvinte = PoolStringArray( "Luni", "Marţi", "Miercuri", "Joi", "Vineri", "Sâmbătă", "Duminică", "Săptămână", "Zi" )
+locatii = PoolStringArray( "Luni", "Marti", "Miercuri", "Joi", "Vineri", "Sambata", "Duminica", "saptamana", "zi" )
