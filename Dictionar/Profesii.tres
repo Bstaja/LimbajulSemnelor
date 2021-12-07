@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Dictionar/cuvinte.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nume_categorie = "Profesii"
+folder = "Profesii"
+cuvinte = PoolStringArray( "Martor", "Mecanic", "Ocupatie", "Avocat", "Basist", "Calugarita", "Contabil", "Instrucor de dans ", "Interpret", "Primar", "Presedinte", "Observator", "Profesor", "Tehnician dentar", "Artist", "", "", "", "", "", "" )
+locatii = PoolStringArray( "martor", "mecanic", "ocupatie", "avocat", "basist", "calugarita", "contabil", "instructor-de-dans", "interpret", "primar", "presedinte", "observator", "profesor", "tehnician-dentar", "artist", "", "", "", "", "", "" )
