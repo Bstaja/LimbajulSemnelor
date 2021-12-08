@@ -21,7 +21,7 @@ var dictionar = {
 	"Lunile\nanului":"Lunile anului",
 	"Formele\ngeometrice":"Formele geometrice",
 	"Îmbrăcăminte":"imbracaminte",
-	"Instrumente muzicale":"Instrumente muzicale",
+	"Instrumente\nmuzicale":"Instrumente muzicale",
 }
 
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
@@ -50,7 +50,7 @@ var btn_denumiri = {
 		"Formele\ngeometrice",
 		"Îmbrăcăminte",
 		"Profesii",
-		"Instrumente muzicale",
+		"Instrumente\nmuzicale",
 	],
 }
 
@@ -72,6 +72,8 @@ var btn_categorii = []
 
 #incarcare tema din f,olderul Tema
 var tema = load("res://Tema/Tema.tres")
+
+var lista_mica = false
 
 func _ready():
 	creare_meniu_principal()
@@ -99,6 +101,7 @@ func creare_meniu_principal():
 	
 	#Conectarea butoanelor din meniu la functii
 	btn_meniu[meniu.CUVINTE].connect("pressed", self, "afisare_categorii_cuvinte")
+	btn_meniu[meniu.FORM_PROP].connect("pressed", self, "afisare_formare_prop")
 	btn_meniu[meniu.TEXT_DACTILEME].connect("pressed", self, "afisare_text_dactil")
 	btn_meniu[meniu.IESIRE].connect("pressed", self, "inchidere_aplicatie")
 
@@ -134,7 +137,7 @@ func creare_categorii_cuvinte():
 		panel.add_child(b_text)
 		
 		
-		panel.size_flags_horizontal = SIZE_SHRINK_CENTER
+		panel.size_flags_horizontal = SIZE_EXPAND_FILL
 		panel.size_flags_vertical = SIZE_SHRINK_CENTER
 		panel.rect_min_size = Vector2(rez_ecran.x/2-10, rez_ecran.y/5)
 		panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -168,12 +171,60 @@ func ascunde_categorii_cuvinte():
 	get_node("Categorii").visible = false
 	$MeniuPrincipal.visible = true
 
+func afisare_formare_prop():
+	ascunde_meniu_principal()
+	var formare_prop = load("res://Meniu/FormareProp.tscn")
+	formare_prop = formare_prop.instance()
+	formare_prop.get_node("ButonInapoi").connect("pressed", self, "stergere_formare_prop")
+	formare_prop.get_node("Titlu/Text").text = "Formare propoziții"
+	add_child(formare_prop)
+	
+	var categ = get_node("Categorii")
+	remove_child(categ)
+	add_child(categ)
+	categ.anchor_top = .5
+	categ.get_node("ButonInapoi").visible = false
+	categ.get_node("Titlu").anchor_left = 0
+	categ.visible = true
+	
+	lista_mica = true
+
+func stergere_formare_prop():
+	var categ = get_node("Categorii")
+	categ.anchor_top = 0
+	categ.get_node("ButonInapoi").visible = true
+	categ.get_node("Titlu").anchor_left = .1
+	get_node("Categorii/ListaCategorii").scroll_vertical = 0
+	categ.visible = false
+	
+	get_node("FormareProp").queue_free()
+	afisare_meniu_principal()
+	
+	if (has_node("Categorie")):
+		get_node("Categorie").queue_free()
+	
+	lista_mica = false
+
 func creare_lista_cuvinte(tip):
+	var conectare_la
+	var functie
+	
+	if (lista_mica):
+		conectare_la = get_node("FormareProp")
+		functie = "adaugare_cuvant"
+	else:
+		conectare_la = self
+		functie = "creare_video"
+	
 	if(dictionar.has(tip)):
 		date_curente = load("res://Dictionar/"+dictionar[tip]+".tres")
 		get_node("Categorii").visible = false
 		var categorie = load("res://Meniu/Cuvinte/Categorie.tscn")
 		categorie = categorie.instance()
+		
+		if (lista_mica):
+			categorie.anchor_top = .5
+		
 		add_child(categorie)
 		categorie.get_node("Titlu/Text").text = tip.replace("\n", " ")
 		
@@ -185,7 +236,7 @@ func creare_lista_cuvinte(tip):
 			b.mouse_filter = Control.MOUSE_FILTER_PASS
 			b.text = btn
 			b.size_flags_horizontal = SIZE_EXPAND_FILL
-			b.connect("pressed", self, "creare_video", [tip, btn])
+			b.connect("pressed", conectare_la, functie, [tip, btn])
 		
 		categorie.get_node("ButonInapoi").connect("pressed", self, "stergere_lista_cuvinte")
 

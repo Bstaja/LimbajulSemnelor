@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-nume_categorie = "Instrumente muzicale"
+nume_categorie = "Instrumente\\nmuzicale"
 folder = "Instrumente muzicale"
 cuvinte = PoolStringArray( "Acordeon", "Chitară", "Harpă", "Pian", "Nai", "Saxofon", "Tobă", "Cimpoi", "Cor", "Fluier", "Muzică", "Muzică-Jazz", "Muzicuţă", "Orchestră", "Oboi", "Vioară" )
-locatii = PoolStringArray( "acordeon", "chitara", "harpa", "pian", "nai", "saxofon", "toba", "cimpo-2", "cor", "fluier-2", "muzica", "muzica-jazz", "muzicuta-1", "orchestra", "oboi", "vioara" )
+locatii = PoolStringArray( "acordeon", "chitara", "harpa", "pian", "nai", "saxofon", "toba", "cimpoi-2", "cor", "fluier-2", "muzica", "muzica-jazz", "muzicuta-1", "orchestra", "oboi", "vioara" )

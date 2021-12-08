@@ -6,5 +6,5 @@
 script = ExtResource( 1 )
 nume_categorie = "Culori"
 folder = "Culori"
-cuvinte = PoolStringArray( "Alb", "Albastiu", "Galben", "Gri", "Maro", "Mov", "Negru", "Portocaliu", "Roșu", "Roz", "Verde", "Violet" )
+cuvinte = PoolStringArray( "Alb", "Albastru", "Galben", "Gri", "Maro", "Mov", "Negru", "Portocaliu", "Roșu", "Roz", "Verde", "Violet" )
 locatii = PoolStringArray( "alb", "albastru", "galben", "gri", "maro", "mov", "negru", "portocaliu", "rosu", "roz", "verde", "violet" )
