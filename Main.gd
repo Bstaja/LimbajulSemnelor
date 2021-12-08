@@ -21,6 +21,7 @@ var dictionar = {
 	"Lunile\nanului":"Lunile anului",
 	"Formele\ngeometrice":"Formele geometrice",
 	"Îmbrăcăminte":"imbracaminte",
+	"Instrumente muzicale":"Instrumente muzicale",
 }
 
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
@@ -49,6 +50,7 @@ var btn_denumiri = {
 		"Formele\ngeometrice",
 		"Îmbrăcăminte",
 		"Profesii",
+		"Instrumente muzicale",
 	],
 }
 
