@@ -245,7 +245,6 @@ func stergere_lista_cuvinte():
 	get_node("Categorie").queue_free()
 
 func creare_video(categorie, cuvant):
-	get_node("Categorie").visible = false
 	var fereastra_cuvant = load("res://Meniu/Cuvinte/Cuvant.tscn")
 	fereastra_cuvant = fereastra_cuvant.instance()
 	var video = load("res://ResurseVideo/"+date_curente.folder+"/"+date_curente.locatii[Array(date_curente.cuvinte).find(cuvant)]+".webm")
@@ -253,18 +252,30 @@ func creare_video(categorie, cuvant):
 	var player_video = fereastra_cuvant.get_node("Video/VideoPlayer")
 	
 	add_child(fereastra_cuvant)
-	fereastra_cuvant.get_node("Denumire/Text").text = cuvant
 	player_video.stream = video
 	var rez_video = player_video.get_video_texture().get_size()
 	var ratio = rez_video.y/rez_video.x
 	player_video.margin_top = -rez_ecran.x*ratio/2
 	player_video.margin_bottom = player_video.margin_top*(-1)
-	player_video.play()
 	
-	fereastra_cuvant.dimensionare_buton_replay(rez_ecran.x/8)
-	fereastra_cuvant.get_node("ButonInapoi").connect("pressed", self, "stergere_video")
-	fereastra_cuvant.get_node("Video/Replay/Buton").connect("pressed", fereastra_cuvant, "reluare_video")
-	player_video.connect("finished", fereastra_cuvant, "afisare_buton_reluare")
+	if (!lista_mica):
+		get_node("Categorie").visible = false
+		
+		player_video.play()
+		
+		fereastra_cuvant.dimensionare_buton_replay(rez_ecran.x/8)
+		fereastra_cuvant.get_node("Denumire/Text").text = cuvant
+		fereastra_cuvant.get_node("ButonInapoi").connect("pressed", self, "stergere_video")
+		fereastra_cuvant.get_node("Video/Replay/Buton").connect("pressed", fereastra_cuvant, "reluare_video")
+		player_video.connect("finished", fereastra_cuvant, "afisare_buton_reluare")
+	else:
+		fereastra_cuvant.visible = false
+		fereastra_cuvant.anchor_top = .5
+		fereastra_cuvant.get_node("Denumire").visible = false
+		fereastra_cuvant.get_node("ButonInapoi").visible = false
+		player_video.connect("finished", get_node("FormareProp"), "urmat_video")
+	
+	return fereastra_cuvant
 
 func stergere_video():
 	get_node("Categorie").visible = true

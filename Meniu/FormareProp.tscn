@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Tema/Tema.tres" type="Theme" id=1]
 [ext_resource path="res://Meniu/Titlu.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Meniu/ButonInapoi.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Meniu/FormareProp.gd" type="Script" id=5]
 [ext_resource path="res://Tema/FontButonInapoi.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Tema/FontPlay.tres" type="DynamicFont" id=7]
 
 [node name="FormareProp" type="Control"]
 anchor_right = 1.0
@@ -20,6 +21,7 @@ __meta__ = {
 
 [node name="Titlu" parent="." instance=ExtResource( 2 )]
 anchor_left = 0.1
+anchor_right = 0.85
 anchor_bottom = 0.06
 
 [node name="CuvSelectate" type="Label" parent="."]
@@ -50,3 +52,10 @@ anchor_top = 0.0
 anchor_right = 0.1
 anchor_bottom = 0.06
 custom_fonts/font = ExtResource( 6 )
+
+[node name="Start" type="Button" parent="."]
+anchor_left = 0.85
+anchor_right = 1.0
+anchor_bottom = 0.06
+custom_fonts/font = ExtResource( 7 )
+text = "►"
