@@ -98,6 +98,7 @@ func mutare_cuvant_jos(linie):
 func redare_video():
 	if ($Start.text == " X "):
 		$Start.text = " ► "
+		get_parent().stergere_lista_cuvinte()
 		$Propozitie/VBoxContainer.get_child(v_curent-1).get_child(1).get_child(0).set("custom_colors/font_color", Color.white)
 		v_curent = 0
 		if (v1!=null and !v1.is_queued_for_deletion()):
@@ -106,18 +107,24 @@ func redare_video():
 			v2.queue_free()
 	else:
 		if (denumiri.size()>1):
+			$Propozitie.scroll_vertical = 0
 			$Start.text = " X "
+			get_parent().incarcare_date(categorii[v_curent])
 			v1 = get_parent().creare_video(categorii[v_curent], denumiri[v_curent])
 			v_curent+=1
+			get_parent().incarcare_date(categorii[v_curent])
 			v2 = get_parent().creare_video(categorii[v_curent], denumiri[v_curent])
 			v1.visible = true
 			v1.get_node("Video/VideoPlayer").play()
 			
 			$Propozitie/VBoxContainer.get_child(0).get_child(1).get_child(0).set("custom_colors/font_color", Color.red)
+			
+			
 
 func urmat_video():
 	v1.queue_free()
 	if (v2!=null):
+		$Propozitie.scroll_vertical = $Propozitie/VBoxContainer.get_child(0).rect_size.y*v_curent
 		v1 = v2
 		v1.visible = true
 		v1.get_node("Video/VideoPlayer").play()
@@ -125,6 +132,7 @@ func urmat_video():
 		$Propozitie/VBoxContainer.get_child(v_curent).get_child(1).get_child(0).set("custom_colors/font_color", Color.red)
 		v_curent+=1
 		if (v_curent<denumiri.size()):
+			get_parent().incarcare_date(categorii[v_curent])
 			v2 = get_parent().creare_video(categorii[v_curent], denumiri[v_curent])
 		else:
 			v2 = null

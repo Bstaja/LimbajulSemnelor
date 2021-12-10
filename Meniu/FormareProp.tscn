@@ -10,7 +10,7 @@
 
 [node name="FormareProp" type="Control"]
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 theme = ExtResource( 1 )
 script = ExtResource( 5 )
 __meta__ = {
@@ -22,40 +22,39 @@ __meta__ = {
 [node name="Titlu" parent="." instance=ExtResource( 2 )]
 anchor_left = 0.1
 anchor_right = 0.85
-anchor_bottom = 0.06
 
 [node name="CuvSelectate" type="Label" parent="."]
-anchor_top = 0.06
+anchor_top = 0.1
 anchor_right = 1.0
-anchor_bottom = 0.11
+anchor_bottom = 0.2
 text = "Cuvinte selectate:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Propozitie" type="ScrollContainer" parent="."]
-anchor_top = 0.11
+anchor_top = 0.2
 anchor_right = 1.0
-anchor_bottom = 0.49
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Propozitie"]
 margin_right = 1024.0
-margin_bottom = 228.0
+margin_bottom = 240.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ButonInapoi" parent="." instance=ExtResource( 4 )]
 anchor_top = 0.0
 anchor_right = 0.1
-anchor_bottom = 0.06
+anchor_bottom = 0.1
 custom_fonts/font = ExtResource( 6 )
 
 [node name="Start" type="Button" parent="."]
 anchor_left = 0.85
 anchor_right = 1.0
-anchor_bottom = 0.06
+anchor_bottom = 0.1
 custom_fonts/font = ExtResource( 7 )
 text = "►"

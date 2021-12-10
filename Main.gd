@@ -197,6 +197,9 @@ func stergere_formare_prop():
 	get_node("Categorii/ListaCategorii").scroll_vertical = 0
 	categ.visible = false
 	
+	if (get_node("FormareProp/Start").text == " X "):
+		get_node("FormareProp").redare_video()
+	
 	get_node("FormareProp").queue_free()
 	afisare_meniu_principal()
 	
@@ -294,3 +297,7 @@ func ascunde_text_dactil():
 
 func inchidere_aplicatie():
 	get_tree().quit()
+	
+func incarcare_date(tip):
+	if(tip!=date_curente.nume_categorie and dictionar.has(tip)):
+		date_curente = load("res://Dictionar/"+dictionar[tip]+".tres")
