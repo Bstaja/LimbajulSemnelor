@@ -7,4 +7,4 @@ script = ExtResource( 1 )
 nume_categorie = "Verbe\\nuzuale"
 folder = "Verbe uzuale"
 cuvinte = PoolStringArray( "a privi", "a scrie", "a citi", "a arăta", "a spune", "a căuta", "a pune", "a lăsa", "a scoate", "a mânca", "a strânge", "a apăsa", "a trage", "a construi", "a mulțumi" )
-locatii = PoolStringArray( "privi", "scire", "citi", "arata", "spune", "cauta", "pune", "lasa", "scoate", "mananca", "strange", "apasa", "trage", "construi", "multumesc" )
+locatii = PoolStringArray( "privi", "scrie", "citi", "arata", "spune", "cauta", "pune", "lasa", "scoate", "mananca", "strange", "apasa", "trage", "construi", "multumesc" )

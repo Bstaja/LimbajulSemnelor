@@ -76,6 +76,26 @@ var tema = load("res://Tema/Tema.tres")
 var lista_mica = false
 
 func _ready():
+	
+	#Rezolutie fixa
+	var rez_ecran = OS.window_size
+	print(rez_ecran)
+	var ratio = rez_ecran.y/rez_ecran.x
+	print(ratio)
+	
+	anchor_top = 0
+	anchor_bottom = 0
+	anchor_right = 0
+	anchor_left = 0
+	margin_top = 0
+	margin_left = 0
+	margin_bottom = 720*ratio
+	margin_right = 720
+	
+	$Camera2D.get_viewport().size = rect_size
+	
+	print(rect_size)
+	
 	creare_meniu_principal()
 	creare_categorii_cuvinte()
 	
@@ -125,7 +145,7 @@ func creare_categorii_cuvinte():
 	#Setare titlu
 	categorii_cuvinte.get_node("Titlu/Text").text = "Categorii Cuvinte"
 	
-	var rez_ecran = OS.window_size
+	var rez_ecran = rect_size
 	
 	#Creearea butoanelor pt categorii
 	for btn in btn_denumiri["categorii"]:
@@ -195,7 +215,6 @@ func stergere_formare_prop():
 	categ.get_node("ButonInapoi").visible = true
 	categ.get_node("Titlu").anchor_left = .1
 	get_node("Categorii/ListaCategorii").scroll_vertical = 0
-	categ.visible = false
 	
 	if (get_node("FormareProp/Start").text == " X "):
 		get_node("FormareProp").redare_video()
@@ -207,6 +226,7 @@ func stergere_formare_prop():
 		get_node("Categorie").queue_free()
 	
 	lista_mica = false
+	categ.visible = false
 
 func creare_lista_cuvinte(tip):
 	var conectare_la
@@ -251,7 +271,7 @@ func creare_video(categorie, cuvant):
 	var fereastra_cuvant = load("res://Meniu/Cuvinte/Cuvant.tscn")
 	fereastra_cuvant = fereastra_cuvant.instance()
 	var video = load("res://ResurseVideo/"+date_curente.folder+"/"+date_curente.locatii[Array(date_curente.cuvinte).find(cuvant)]+".webm")
-	var rez_ecran = OS.window_size
+	var rez_ecran = rect_size
 	var player_video = fereastra_cuvant.get_node("Video/VideoPlayer")
 	
 	add_child(fereastra_cuvant)
