@@ -26,7 +26,8 @@ var dictionar = {
 
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
 var btn_denumiri = {
-	"meniu": ["Cuvinte", 
+	"meniu": [
+		"Cuvinte", 
 		"Expresii",
 		"Formare propoziții", 
 		"Text->dactileme", 
@@ -74,6 +75,8 @@ var btn_categorii = []
 var tema = load("res://Tema/Tema.tres")
 
 var lista_mica = false
+
+var buton_back = "inchidere_aplicatie"
 
 func _ready():
 	
@@ -127,6 +130,7 @@ func creare_meniu_principal():
 
 func afisare_meniu_principal():
 	$MeniuPrincipal.visible = true
+	buton_back = "inchidere_aplicatie"
 
 func ascunde_meniu_principal():
 	$MeniuPrincipal.visible = false
@@ -186,10 +190,15 @@ func creare_categorii_cuvinte():
 func afisare_categorii_cuvinte():
 	$MeniuPrincipal.visible = false
 	get_node("Categorii").visible = true
+	buton_back = "ascunde_categorii_cuvinte"
 
 func ascunde_categorii_cuvinte():
 	get_node("Categorii").visible = false
 	$MeniuPrincipal.visible = true
+	if (lista_mica):
+		buton_back = "stergere_formare_prop"
+	else:
+		buton_back = "inchidere_aplicatie"
 
 func afisare_formare_prop():
 	ascunde_meniu_principal()
@@ -208,6 +217,7 @@ func afisare_formare_prop():
 	categ.visible = true
 	
 	lista_mica = true
+	buton_back = "stergere_formare_prop"
 
 func stergere_formare_prop():
 	var categ = get_node("Categorii")
@@ -227,6 +237,8 @@ func stergere_formare_prop():
 	
 	lista_mica = false
 	categ.visible = false
+	
+	buton_back = "inchidere_aplicatie"
 
 func creare_lista_cuvinte(tip):
 	var conectare_la
@@ -262,10 +274,16 @@ func creare_lista_cuvinte(tip):
 			b.connect("pressed", conectare_la, functie, [tip, btn])
 		
 		categorie.get_node("ButonInapoi").connect("pressed", self, "stergere_lista_cuvinte")
+		buton_back = "stergere_lista_cuvinte"
 
 func stergere_lista_cuvinte():
 	get_node("Categorii").visible = true
-	get_node("Categorie").queue_free()
+	if (has_node("Categorie")):
+		get_node("Categorie").queue_free()
+	if (!lista_mica):
+		buton_back = "ascunde_categorii_cuvinte"
+	else:
+		buton_back = "stergere_formare_prop"
 
 func creare_video(categorie, cuvant):
 	var fereastra_cuvant = load("res://Meniu/Cuvinte/Cuvant.tscn")
@@ -291,18 +309,22 @@ func creare_video(categorie, cuvant):
 		fereastra_cuvant.get_node("ButonInapoi").connect("pressed", self, "stergere_video")
 		fereastra_cuvant.get_node("Video/Replay/Buton").connect("pressed", fereastra_cuvant, "reluare_video")
 		player_video.connect("finished", fereastra_cuvant, "afisare_buton_reluare")
+		buton_back = "stergere_video"
 	else:
 		fereastra_cuvant.visible = false
 		fereastra_cuvant.anchor_top = .5
 		fereastra_cuvant.get_node("Denumire").visible = false
 		fereastra_cuvant.get_node("ButonInapoi").visible = false
 		player_video.connect("finished", get_node("FormareProp"), "urmat_video")
+		buton_back = "oprire_video_succesive"
+	
 	
 	return fereastra_cuvant
 
 func stergere_video():
 	get_node("Categorie").visible = true
 	get_node("Cuvant").queue_free()
+	buton_back = "stergere_lista_cuvinte"
 
 func afisare_text_dactil():
 	$MeniuPrincipal.visible = false
@@ -310,10 +332,12 @@ func afisare_text_dactil():
 	text_dactil = text_dactil.instance()
 	add_child(text_dactil)
 	text_dactil.get_node("ButonInapoi").connect("pressed", self, "ascunde_text_dactil")
+	buton_back = "ascunde_text_dactil"
 
 func ascunde_text_dactil():
 	get_node("MeniuPrincipal").visible = true
 	get_node("TextDactileme").queue_free()
+	buton_back = "inchidere_aplicatie"
 
 func inchidere_aplicatie():
 	get_tree().quit()
@@ -321,3 +345,13 @@ func inchidere_aplicatie():
 func incarcare_date(tip):
 	if(tip!=date_curente.nume_categorie and dictionar.has(tip)):
 		date_curente = load("res://Dictionar/"+dictionar[tip]+".tres")
+
+func oprire_video_succesive():
+	var n = get_node_or_null("FormareProp")
+	if (n!=null):
+		n.redare_video()
+		buton_back = "stergere_formare_prop"
+
+func _notification(what):
+	if (what==MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST):
+		call_deferred(buton_back)
