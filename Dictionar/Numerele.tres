@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Dictionar/cuvinte.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nume_categorie = "Numerele"
+folder = "Numerele"
+cuvinte = PoolStringArray( "Număr", "Doi", "Trei", "Patru", "Cinci", "Şase", "Şapte", "Opt", "Nouă", "Zece", "O-suta- de-mii", "O-suta- de-milioane", "Un-miliard" )
+locatii = PoolStringArray( "numar", "doi", "trei", "patru", "cinci", "sase", "sapte", "opt", "noua", "zece", "o-suta-mii", "o-suta-milioane", "un-miliard" )

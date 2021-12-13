@@ -22,6 +22,7 @@ var dictionar = {
 	"Formele\ngeometrice":"Formele geometrice",
 	"Îmbrăcăminte":"imbracaminte",
 	"Instrumente\nmuzicale":"Instrumente muzicale",
+	"Numerele":"Numerele",
 }
 
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
@@ -52,6 +53,7 @@ var btn_denumiri = {
 		"Îmbrăcăminte",
 		"Profesii",
 		"Instrumente\nmuzicale",
+		"Numerele",
 	],
 }
 
