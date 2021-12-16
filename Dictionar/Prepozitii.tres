@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Dictionar/cuvinte.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nume_categorie = "Prepozitii"
+folder = "Prepozitii"
+cuvinte = PoolStringArray( "Pe", "La", "Spre", "Cu", "De", "Fără", "Sub", "În", "Prin", "Pentru", "Către", "Contra", "Lângă", "Deasupra" )
+locatii = PoolStringArray( "pe", "la", "spre", "cu", "de", "fara", "sub", "in", "prin", "pentru", "catre", "contra", "langa", "deasupra" )

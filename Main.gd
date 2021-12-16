@@ -23,7 +23,7 @@ var dictionar = {
 	"Îmbrăcăminte":"imbracaminte",
 	"Instrumente\nmuzicale":"Instrumente muzicale",
 	"Numerele":"Numerele",
-	
+	"Prepozitii":"Prepozitii",
 }
 
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
@@ -55,6 +55,7 @@ var btn_denumiri = {
 		"Profesii",
 		"Instrumente\nmuzicale",
 		"Numerele",
+		"Prepoziții",
 	],
 }
 
