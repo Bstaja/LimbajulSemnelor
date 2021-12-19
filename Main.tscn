@@ -20,6 +20,7 @@ __meta__ = {
 }
 
 [node name="Background" parent="MeniuPrincipal" instance=ExtResource( 3 )]
+color = Color( 0.396078, 0.760784, 0.141176, 1 )
 
 [node name="ListaButoane" type="ScrollContainer" parent="MeniuPrincipal"]
 anchor_top = 0.1
