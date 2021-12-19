@@ -357,5 +357,5 @@ func oprire_video_succesive():
 		buton_back = "stergere_formare_prop"
 
 func _notification(what):
-	if (what==MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST):
+	if (what==MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST or what==MainLoop.NOTIFICATION_WM_QUIT_REQUEST):
 		call_deferred(buton_back)
