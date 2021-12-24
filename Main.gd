@@ -83,6 +83,7 @@ var lista_mica = false
 var buton_back = "inchidere_aplicatie"
 
 func _ready():
+	theme = tema
 	
 	#Rezolutie fixa
 	var rez_ecran = OS.window_size
@@ -99,7 +100,7 @@ func _ready():
 	margin_bottom = 720*ratio
 	margin_right = 720
 	
-	$Camera2D.get_viewport().size = rect_size
+	$ViewPort.get_viewport().size = rect_size
 	
 	print(rect_size)
 	
@@ -113,7 +114,6 @@ func _ready():
 func creare_meniu_principal():
 	#referinta lista meniu
 	var lista = $MeniuPrincipal/ListaButoane/VBoxContainer
-	theme = tema
 	
 	#Crearea butoanelor din meniul principal
 	for btn in btn_denumiri["meniu"]:
@@ -154,20 +154,30 @@ func creare_categorii_cuvinte():
 	categorii_cuvinte.get_node("Titlu/Text").text = "Categorii Cuvinte"
 	
 	var rez_ecran = rect_size
+	var tema_butoane = load("res://Tema/tema_btn_categorii.tres")
 	
 	#Creearea butoanelor pt categorii
 	for btn in btn_denumiri["categorii"]:
+		#Creare buton nou
 		var b = Button.new()
+		#Creare panel
 		var panel = PanelContainer.new()
+		#Creare text buton
 		var b_text = Label.new()
+		#Adauga panelul în listă
 		lista.add_child(panel)
+		#În panel vor fi adăugate butonul și textul acestuia
 		panel.add_child(b)
 		panel.add_child(b_text)
-		
+		#Se contectează semnalul "pressed" al butonului la funcția care
+		#afișează lista de cuvinte
+		#Ultimul argument al funcției "connect" este un vector cu argumentele
+		#care vor fi predate funcției la declanșarea semnalului
+		b.connect("pressed", self, "creare_lista_cuvinte", [btn])
 		
 		panel.size_flags_horizontal = SIZE_EXPAND_FILL
 		panel.size_flags_vertical = SIZE_SHRINK_CENTER
-		panel.rect_min_size = Vector2(rez_ecran.x/2-10, rez_ecran.y/5)
+		panel.rect_min_size = Vector2(0, rez_ecran.y/5)
 		panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		
 		
@@ -182,8 +192,11 @@ func creare_categorii_cuvinte():
 		b.size_flags_vertical = SIZE_EXPAND_FILL
 		b.set_anchors_and_margins_preset(Control.PRESET_WIDE)
 		b.mouse_filter = Control.MOUSE_FILTER_PASS
+		b.add_stylebox_override("normal", tema_butoane)
+		b.add_stylebox_override("pressed", tema_butoane)
+		b.add_stylebox_override("hover", tema_butoane)
+		b.add_stylebox_override("focus", tema_butoane)
 		btn_categorii.append(b)
-		b.connect("pressed", self, "creare_lista_cuvinte", [btn])
 	
 	#Conectarea butonului Inapoi din meniu de categorii
 	categorii_cuvinte.get_node("ButonInapoi").connect("pressed", self, "ascunde_categorii_cuvinte")
@@ -213,8 +226,6 @@ func afisare_formare_prop():
 	add_child(formare_prop)
 	
 	var categ = get_node("Categorii")
-	remove_child(categ)
-	add_child(categ)
 	categ.anchor_top = .5
 	categ.get_node("ButonInapoi").visible = false
 	categ.get_node("Titlu").anchor_left = 0

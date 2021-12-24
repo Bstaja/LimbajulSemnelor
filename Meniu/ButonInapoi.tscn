@@ -1,21 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Tema/Tema.tres" type="Theme" id=1]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.2, 0.227451, 0.309804, 1 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.2, 0.227451, 0.309804, 1 )
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.2, 0.227451, 0.309804, 1 )
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.2, 0.227451, 0.309804, 1 )
-
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.2, 0.227451, 0.309804, 1 )
+bg_color = Color( 0.886275, 0.443137, 0.113725, 1 )
 
 [node name="ButonInapoi" type="Button"]
 anchor_top = 0.9
@@ -24,10 +12,10 @@ anchor_bottom = 1.0
 grow_vertical = 0
 theme = ExtResource( 1 )
 custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/disabled = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
 text = " <"
 __meta__ = {
 "_edit_use_anchors_": false

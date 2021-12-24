@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Tema/Tema.tres" type="Theme" id=1]
 [ext_resource path="res://Meniu/Titlu.tscn" type="PackedScene" id=2]
@@ -7,6 +7,13 @@
 [ext_resource path="res://Meniu/FormareProp.gd" type="Script" id=5]
 [ext_resource path="res://Tema/FontButonInapoi.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Tema/FontPlay.tres" type="DynamicFont" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [node name="FormareProp" type="Control"]
 anchor_right = 1.0
@@ -21,7 +28,6 @@ __meta__ = {
 
 [node name="Titlu" parent="." instance=ExtResource( 2 )]
 anchor_left = 0.1
-anchor_right = 0.85
 
 [node name="CuvSelectate" type="Label" parent="."]
 anchor_top = 0.1
@@ -53,8 +59,14 @@ anchor_bottom = 0.1
 custom_fonts/font = ExtResource( 6 )
 
 [node name="Start" type="Button" parent="."]
-anchor_left = 0.85
-anchor_right = 1.0
-anchor_bottom = 0.1
+anchor_left = 0.82
+anchor_top = 0.005
+anchor_right = 0.99
+anchor_bottom = 0.095
 custom_fonts/font = ExtResource( 7 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
 text = "►"
