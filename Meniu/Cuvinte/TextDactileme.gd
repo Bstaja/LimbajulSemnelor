@@ -29,17 +29,28 @@ func _on_Buton_pressed():
 	text = $CasetaText/HSplitContainer/Text.text
 	text = text.to_lower()
 	var nr = 0
+	#Literele invalide din text care vor fi sterse
+	var de_sters = ""
+	
 	for l in text:
-		text[nr] = alfabet[alfabet_mic.find(l)]
+		var aux = alfabet_mic.find(l)
+		if (aux == -1 and de_sters.find(l)==-1):
+			de_sters+=l
+	
+	for l in de_sters:
+		text = text.replace(l, "")
+	
+	for l in text:
+		var aux = alfabet_mic.find(l)
+		text[nr] = alfabet[aux]
 		nr+=1
 	var t = 0.0
 	
 	for i in text:
 		var litera = alfabet.find(i)
-		if (alfabet.find(i)!=-1):
-			animatie.track_insert_key(dactileme, t, litera)
-			animatie.track_insert_key(litera_curenta, t, {"method":"setare_litera_curenta", "args":[]})
-			t+=viteza_normala
+		animatie.track_insert_key(dactileme, t, litera)
+		animatie.track_insert_key(litera_curenta, t, {"method":"setare_litera_curenta", "args":[]})
+		t+=viteza_normala
 	
 	animatie.length = t-viteza_normala
 	$AnimationPlayer.play("RedareDactileme", -1, viteza)
@@ -51,7 +62,7 @@ func setare_litera_curenta():
 	text_procesat = text_procesat.insert(index-1, "0")
 	text_procesat = text_procesat.insert(index+1, "0")
 	text_procesat = text_procesat.split("0")
-	$LiteraCurenta/HSplitContainer/Text.bbcode_text = "[center]"+text_procesat[0]+"[color=red]"+text_procesat[1]+"[/color]"+text_procesat[2]+"[/center]"
+	$LiteraCurenta/VSplitContainer/Text.bbcode_text = "[center]"+text_procesat[0]+"[color=red]"+text_procesat[1]+"[/color]"+text_procesat[2]+"[/center]"
 	#$LiteraCurenta/HSplitContainer/Text.text = alfabet[$Dactileme.frame]
 
 
@@ -65,3 +76,9 @@ func _on_LiteraUrmatoare_pressed():
 	print($AnimationPlayer.current_animation_position)
 	if ($AnimationPlayer.current_animation_position<$AnimationPlayer.current_animation_length):
 		$AnimationPlayer.advance(viteza_normala)
+
+
+func _on_Text_text_entered(new_text):
+	_on_Buton_pressed()
+	$Denumire.grab_focus()
+	$CasetaText/HSplitContainer/Text.text = ""

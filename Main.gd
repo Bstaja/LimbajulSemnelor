@@ -1,5 +1,19 @@
 extends Control
 
+class Sortare:
+	static func sort(a, b):
+		var alfabet := "aăâbcdefghiîjklmnopqrsștțuvwxyz"
+		a = a.rstrip("\n ").to_lower().replace("a ", "").replace("se ", "")
+		b = b.rstrip("\n ").to_lower().replace("a ", "").replace("se ", "")
+		var i = 0
+		var a_size = a.length()-1
+		var b_size = b.length()-1
+		while(a[i] == b[i] and i<a_size and i<b_size):
+			i+=1
+		if (alfabet.find(a[i])<alfabet.find(b[i])):
+			return true
+		return false
+
 #Datele care se afla in prezent in memorie
 var date_curente
 
@@ -59,6 +73,12 @@ var btn_denumiri = {
 	],
 }
 
+var categorii_nesortate = [
+	"Zilele\nsăptămânii",
+	"Lunile\nanului",
+	"Numerele",
+]
+
 #Enumerator pt butoanele din meniul principal (trebuie puse in ordinea in care au fost scrise mai sus)
 enum meniu	{
 	CUVINTE,
@@ -83,6 +103,8 @@ var lista_mica = false
 var buton_back = "inchidere_aplicatie"
 
 func _ready():
+	btn_denumiri["categorii"].sort_custom(Sortare, "sort")
+	
 	theme = tema
 	
 	#Rezolutie fixa
@@ -106,10 +128,6 @@ func _ready():
 	
 	creare_meniu_principal()
 	creare_categorii_cuvinte()
-	
-#	#Sortare liste in ordine aflabetica
-#	for i in btn_denumiri["categorii"]:
-#		btn_denumiri[i].sort()
 
 func creare_meniu_principal():
 	#referinta lista meniu
@@ -218,6 +236,9 @@ func ascunde_categorii_cuvinte():
 		buton_back = "inchidere_aplicatie"
 
 func afisare_formare_prop():
+	var tema_titlu_mijloc = load("res://Tema/tema_titlu_mijloc.tres")
+	get_node("Categorii/Titlu").add_stylebox_override("panel", tema_titlu_mijloc)
+	
 	ascunde_meniu_principal()
 	var formare_prop = load("res://Meniu/FormareProp.tscn")
 	formare_prop = formare_prop.instance()
@@ -254,6 +275,7 @@ func stergere_formare_prop():
 	categ.visible = false
 	
 	buton_back = "inchidere_aplicatie"
+	get_node("Categorii/Titlu").add_stylebox_override("panel", null)
 
 func creare_lista_cuvinte(tip):
 	var conectare_la
@@ -272,7 +294,26 @@ func creare_lista_cuvinte(tip):
 		var categorie = load("res://Meniu/Cuvinte/Categorie.tscn")
 		categorie = categorie.instance()
 		
+		if !(tip in categorii_nesortate):
+			var aux = Array(date_curente.cuvinte)
+			var aux2 = Array()
+			var aux3 = aux.duplicate()
+			aux.sort_custom(Sortare, "sort")
+			
+			for i in range(aux.size()):
+				aux2.append(date_curente.locatii[aux3.find(aux[i])])
+			
+			date_curente.cuvinte = PoolStringArray(aux)
+			date_curente.locatii = PoolStringArray(aux2)
+		
 		if (lista_mica):
+			var tema_panel = load("res://Tema/tema_titlu_mijloc_cuv.tres")
+			var tema_btn_inapoi = load("res://Tema/tema_btn_inapo_mij.tres")
+			categorie.get_node("Titlu").add_stylebox_override("panel", tema_panel)
+			categorie.get_node("ButonInapoi").add_stylebox_override("normal", tema_btn_inapoi)
+			categorie.get_node("ButonInapoi").add_stylebox_override("pressed", tema_btn_inapoi)
+			categorie.get_node("ButonInapoi").add_stylebox_override("hover", tema_btn_inapoi)
+			categorie.get_node("ButonInapoi").add_stylebox_override("focus", tema_btn_inapoi)
 			categorie.anchor_top = .5
 		
 		add_child(categorie)
@@ -303,6 +344,7 @@ func stergere_lista_cuvinte():
 func creare_video(categorie, cuvant):
 	var fereastra_cuvant = load("res://Meniu/Cuvinte/Cuvant.tscn")
 	fereastra_cuvant = fereastra_cuvant.instance()
+	#print("res://ResurseVideo/"+date_curente.folder+"/"+date_curente.locatii[Array(date_curente.cuvinte).find(cuvant)]+".webm")
 	var video = load("res://ResurseVideo/"+date_curente.folder+"/"+date_curente.locatii[Array(date_curente.cuvinte).find(cuvant)]+".webm")
 	var rez_ecran = rect_size
 	var player_video = fereastra_cuvant.get_node("Video/VideoPlayer")

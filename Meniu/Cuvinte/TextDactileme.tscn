@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Tema/Tema.tres" type="Theme" id=1]
 [ext_resource path="res://Meniu/Cuvinte/TextDactileme.gd" type="Script" id=2]
@@ -6,9 +6,22 @@
 [ext_resource path="res://Tema/dactileme-vechi3.png" type="Texture" id=4]
 [ext_resource path="res://Tema/OpenDyslexic-Bold.otf" type="DynamicFontData" id=5]
 [ext_resource path="res://Meniu/ButonInapoi.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Tema/FontStangaDreapta.tres" type="DynamicFont" id=7]
 
-[sub_resource type="Animation" id=1]
-resource_name = "New Anim"
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.886275, 0.443137, 0.113725, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.886275, 0.443137, 0.113725, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.886275, 0.443137, 0.113725, 1 )
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="Animation" id=4]
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -24,10 +37,31 @@ tracks/0/keys = {
 } ]
 }
 
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.886275, 0.443137, 0.113725, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
 [sub_resource type="DynamicFont" id=2]
 size = 80
 extra_spacing_top = -15
 font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color( 0.886275, 0.443137, 0.113725, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxEmpty" id=11]
 
 [node name="TextDactileme" type="Control"]
 anchor_right = 1.0
@@ -45,6 +79,7 @@ focus_mode = 2
 anchor_left = 0.1
 anchor_right = 1.0
 anchor_bottom = 0.1
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -65,11 +100,17 @@ __meta__ = {
 anchor_top = 0.0
 anchor_right = 0.1
 anchor_bottom = 0.1
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 5 )
 
 [node name="CasetaText" type="Panel" parent="."]
 anchor_top = 0.1
 anchor_right = 1.0
 anchor_bottom = 0.2
+custom_styles/panel = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -82,70 +123,95 @@ __meta__ = {
 }
 
 [node name="Text" type="LineEdit" parent="CasetaText/HSplitContainer"]
-margin_right = 636.0
+margin_right = 720.0
 margin_bottom = 144.0
 size_flags_horizontal = 3
+custom_styles/read_only = SubResource( 7 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 7 )
 align = 1
-clear_button_enabled = true
 placeholder_text = "Introduceți textul aici"
 placeholder_alpha = 0.68
 caret_blink = true
 caret_blink_speed = 0.4
 
-[node name="Buton" type="Button" parent="CasetaText/HSplitContainer"]
-margin_left = 644.0
-margin_right = 720.0
-margin_bottom = 144.0
-text = " > "
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/New Anim" = SubResource( 1 )
+"anims/New Anim" = SubResource( 4 )
 
 [node name="Dactileme" type="Sprite" parent="."]
-position = Vector2( 360, 652.441 )
+position = Vector2( 360, 592.12 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 hframes = 6
 vframes = 6
 
 [node name="LiteraCurenta" type="Panel" parent="."]
-anchor_top = 0.9
+anchor_top = 0.84
+anchor_right = 1.0
+anchor_bottom = 0.99
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 720, 216 )
+custom_styles/panel = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSplitContainer" type="VBoxContainer" parent="LiteraCurenta"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSplitContainer" type="HBoxContainer" parent="LiteraCurenta"]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -59.0
-margin_bottom = 59.0
+[node name="Text" type="RichTextLabel" parent="LiteraCurenta/VSplitContainer"]
+margin_right = 720.0
+margin_bottom = 139.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/normal = SubResource( 10 )
+bbcode_enabled = true
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LiteraPrecedenta" type="Button" parent="LiteraCurenta/HSplitContainer"]
-margin_right = 76.0
-margin_bottom = 118.0
+[node name="HSplitContainer" type="HBoxContainer" parent="LiteraCurenta/VSplitContainer"]
+margin_top = 139.0
+margin_right = 720.0
+margin_bottom = 216.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LiteraPrecedenta" type="Button" parent="LiteraCurenta/VSplitContainer/HSplitContainer"]
+margin_right = 358.0
+margin_bottom = 77.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 7 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 11 )
 text = " < "
 
-[node name="Text" type="RichTextLabel" parent="LiteraCurenta/HSplitContainer"]
-margin_left = 80.0
-margin_right = 640.0
-margin_bottom = 118.0
-size_flags_horizontal = 3
-custom_fonts/normal_font = SubResource( 2 )
-bbcode_enabled = true
-scroll_active = false
-
-[node name="LiteraUrmatoare" type="Button" parent="LiteraCurenta/HSplitContainer"]
-margin_left = 644.0
+[node name="LiteraUrmatoare" type="Button" parent="LiteraCurenta/VSplitContainer/HSplitContainer"]
+margin_left = 362.0
 margin_right = 720.0
-margin_bottom = 118.0
+margin_bottom = 77.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 7 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 11 )
 text = " > "
 
-[connection signal="pressed" from="CasetaText/HSplitContainer/Buton" to="." method="_on_Buton_pressed"]
-[connection signal="pressed" from="LiteraCurenta/HSplitContainer/LiteraPrecedenta" to="." method="_on_LiteraPrecedenta_pressed"]
-[connection signal="pressed" from="LiteraCurenta/HSplitContainer/LiteraUrmatoare" to="." method="_on_LiteraUrmatoare_pressed"]
+[connection signal="text_entered" from="CasetaText/HSplitContainer/Text" to="." method="_on_Text_text_entered"]
+[connection signal="pressed" from="LiteraCurenta/VSplitContainer/HSplitContainer/LiteraPrecedenta" to="." method="_on_LiteraPrecedenta_pressed"]
+[connection signal="pressed" from="LiteraCurenta/VSplitContainer/HSplitContainer/LiteraUrmatoare" to="." method="_on_LiteraUrmatoare_pressed"]

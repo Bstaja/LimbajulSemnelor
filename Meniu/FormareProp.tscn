@@ -59,10 +59,12 @@ anchor_bottom = 0.1
 custom_fonts/font = ExtResource( 6 )
 
 [node name="Start" type="Button" parent="."]
-anchor_left = 0.82
-anchor_top = 0.005
-anchor_right = 0.99
-anchor_bottom = 0.095
+anchor_left = 0.85
+anchor_right = 1.0
+anchor_bottom = 0.1
+margin_top = 2.0
+margin_right = -4.0
+margin_bottom = -4.0
 custom_fonts/font = ExtResource( 7 )
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 1 )

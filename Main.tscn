@@ -1,13 +1,38 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Meniu/Titlu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Meniu/Background.tscn" type="PackedScene" id=3]
 
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.886275, 0.443137, 0.113725, 1 )
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margini" type="CanvasLayer" parent="."]
+
+[node name="Stanga" type="ColorRect" parent="Margini"]
+anchor_bottom = 1.0
+margin_right = 30.0
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dreapta" type="ColorRect" parent="Margini"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+color = Color( 1, 1, 1, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -25,13 +50,15 @@ __meta__ = {
 anchor_top = 0.1
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 30.0
+margin_right = -30.0
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MeniuPrincipal/ListaButoane"]
-margin_right = 720.0
+margin_right = 660.0
 margin_bottom = 1296.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -39,6 +66,7 @@ custom_constants/separation = -2
 alignment = 1
 
 [node name="Titlu" parent="MeniuPrincipal" instance=ExtResource( 2 )]
+custom_styles/panel = SubResource( 1 )
 
 [node name="ViewPort" type="Camera2D" parent="."]
 anchor_mode = 0
