@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Dictionar/cuvinte.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nume_categorie = "Alimente"
+folder = "Alimente"
+cuvinte = PoolStringArray( "Brânză", "Cafea", "Cereale", "Ciocolată", "Ciorbă", "Ouă", "Carne", "Apa", "Gem", "Lapte", "Unt", "Pâine", "Orez", "Mălai", "Făină", "Oţet", "Ulei", "Plăcintă", "Pizza", "Piure", "Piper", "Sare", "Zahăr" )
+locatii = PoolStringArray( "branza", "cafea", "cereale", "ciocolata", "ciorba", "oua", "carne", "apa", "gem", "lapte", "unt", "paine", "orez", "malai", "faina", "otet", "ulei", "placinta", "pizza", "piure", "piper", "sare", "zahar" )

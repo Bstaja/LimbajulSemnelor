@@ -38,6 +38,7 @@ var dictionar = {
 	"Instrumente\nmuzicale":"Instrumente muzicale",
 	"Numerele":"Numerele",
 	"Prepoziții":"Prepozitii",
+	"Alimente":"Alimente",
 }
 
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
@@ -70,6 +71,7 @@ var btn_denumiri = {
 		"Instrumente\nmuzicale",
 		"Numerele",
 		"Prepoziții",
+		"Alimente",
 	],
 }
 
