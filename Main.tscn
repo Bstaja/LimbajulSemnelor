@@ -20,6 +20,7 @@ __meta__ = {
 [node name="Margini" type="CanvasLayer" parent="."]
 
 [node name="Stanga" type="ColorRect" parent="Margini"]
+anchor_top = 0.1
 anchor_bottom = 1.0
 margin_right = 30.0
 color = Color( 1, 1, 1, 0 )
@@ -29,6 +30,7 @@ __meta__ = {
 
 [node name="Dreapta" type="ColorRect" parent="Margini"]
 anchor_left = 1.0
+anchor_top = 0.1
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -40.0

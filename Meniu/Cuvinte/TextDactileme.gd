@@ -80,5 +80,4 @@ func _on_LiteraUrmatoare_pressed():
 
 func _on_Text_text_entered(new_text):
 	_on_Buton_pressed()
-	$Denumire.grab_focus()
-	$CasetaText/HSplitContainer/Text.text = ""
+	$CasetaText/HSplitContainer/Text.release_focus()

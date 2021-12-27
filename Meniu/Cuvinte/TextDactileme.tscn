@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Tema/Tema.tres" type="Theme" id=1]
 [ext_resource path="res://Meniu/Cuvinte/TextDactileme.gd" type="Script" id=2]
@@ -20,6 +20,13 @@ corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
 [sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_top = 2
+border_color = Color( 0.85098, 0.419608, 0.0980392, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
 
 [sub_resource type="Animation" id=4]
 tracks/0/type = "method"
@@ -128,7 +135,7 @@ margin_bottom = 144.0
 size_flags_horizontal = 3
 custom_styles/read_only = SubResource( 7 )
 custom_styles/focus = SubResource( 7 )
-custom_styles/normal = SubResource( 7 )
+custom_styles/normal = SubResource( 12 )
 align = 1
 placeholder_text = "Introduceți textul aici"
 placeholder_alpha = 0.68

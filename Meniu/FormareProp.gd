@@ -11,7 +11,9 @@ func _ready():
 	$Start.connect("pressed", self, "redare_video")
 
 func adaugare_cuvant(categorie, denumire):
-	var aspect_butoane = load("res://Tema/tema_btn_categorii.tres")
+	var aspect_btn_stergere = load("res://Tema/tema_btn_categorii.tres")
+	var aspect_btn_sus = load("res://Tema/tema_btn_sus.tres")
+	var aspect_btn_jos = load("res://Tema/tema_btn_jos.tres")
 	#Numele categoriei și denumirea fiecarui cuvânt adăugat se rețin în 2 vectori
 	categorii.append(categorie)
 	denumiri.append(denumire)
@@ -43,27 +45,27 @@ func adaugare_cuvant(categorie, denumire):
 	text.anchor_left = .05
 	
 	btn_sus.add_font_override("font", font)
-	btn_sus.add_stylebox_override("normal", aspect_butoane)
-	btn_sus.add_stylebox_override("pressed", aspect_butoane)
-	btn_sus.add_stylebox_override("hover", aspect_butoane)
+	btn_sus.add_stylebox_override("normal", aspect_btn_sus)
+	btn_sus.add_stylebox_override("pressed", aspect_btn_sus)
+	btn_sus.add_stylebox_override("hover", aspect_btn_sus)
 	btn_sus.add_stylebox_override("focus", StyleBoxEmpty.new())
 	btn_sus.size_flags_vertical = SIZE_EXPAND_FILL
-	btn_sus.text = " ▲ "
+	btn_sus.text = "  ▲  "
 	
 	btn_jos.add_font_override("font", font)
-	btn_jos.add_stylebox_override("normal", aspect_butoane)
-	btn_jos.add_stylebox_override("pressed", aspect_butoane)
-	btn_jos.add_stylebox_override("hover", aspect_butoane)
+	btn_jos.add_stylebox_override("normal", aspect_btn_jos)
+	btn_jos.add_stylebox_override("pressed", aspect_btn_jos)
+	btn_jos.add_stylebox_override("hover", aspect_btn_jos)
 	btn_jos.add_stylebox_override("focus", StyleBoxEmpty.new())
 	btn_jos.size_flags_vertical = SIZE_EXPAND_FILL
-	btn_jos.text = " ▼ "
+	btn_jos.text = "  ▼  "
 	
 	btn_mutare.set("custom_constants/separation", -10)
 	
 	btn_stergere.text = " X "
-	btn_stergere.add_stylebox_override("normal", aspect_butoane)
-	btn_stergere.add_stylebox_override("pressed", aspect_butoane)
-	btn_stergere.add_stylebox_override("hover", aspect_butoane)
+	btn_stergere.add_stylebox_override("normal", aspect_btn_stergere)
+	btn_stergere.add_stylebox_override("pressed", aspect_btn_stergere)
+	btn_stergere.add_stylebox_override("hover", aspect_btn_stergere)
 	btn_stergere.add_stylebox_override("focus", StyleBoxEmpty.new())
 	
 	linie.mouse_filter = Control.MOUSE_FILTER_PASS
