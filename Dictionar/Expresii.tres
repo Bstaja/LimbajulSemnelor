@@ -6,5 +6,5 @@
 script = ExtResource( 1 )
 nume_categorie = "Expresii"
 folder = "Expresii"
-cuvinte = PoolStringArray(  )
-locatii = PoolStringArray(  )
+cuvinte = PoolStringArray( "Am înțeles", "Am o rugăminte", "Așa e", "Ați putea repeta, vă rog", "Aveți dreptate", "Aș vrea să știu unde pot cumpăra", "Ați putea să semnați aici, vă rog", "Am să vă fac cunoștință", "Bineînteles", "Bravo", "Bună", "Bună dimineața", "Bună ziua" )
+locatii = PoolStringArray( "am inteles", "am o rugaminte", "asa e", "Ati putea repeta var rog", "aveti dreptate", "as-vrea-sa-stiu-unde-pot-cumpara", "Ati-putea-sa-semnati-aiciva-rog", "am-sa-va-fac-cunostinta", "bineinteles", "Bravo", "buna", "buna-dimineata", "buna-ziua" )
