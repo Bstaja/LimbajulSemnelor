@@ -39,6 +39,7 @@ var dictionar = {
 	"Numerele":"Numerele",
 	"Prepoziții":"Prepozitii",
 	"Alimente":"Alimente",
+	"Expresii":"Expresii",
 }
 
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
@@ -148,6 +149,7 @@ func creare_meniu_principal():
 	
 	#Conectarea butoanelor din meniu la functii
 	btn_meniu[meniu.CUVINTE].connect("pressed", self, "afisare_categorii_cuvinte")
+	btn_meniu[meniu.EXPRESII].connect("pressed", self, "creare_lista_cuvinte", ["Expresii"])
 	btn_meniu[meniu.FORM_PROP].connect("pressed", self, "afisare_formare_prop")
 	btn_meniu[meniu.TEXT_DACTILEME].connect("pressed", self, "afisare_text_dactil")
 	btn_meniu[meniu.IESIRE].connect("pressed", self, "inchidere_aplicatie")
@@ -330,14 +332,13 @@ func creare_lista_cuvinte(tip):
 			b.text = btn
 			b.size_flags_horizontal = SIZE_EXPAND_FILL
 			b.connect("pressed", conectare_la, functie, [tip, btn])
-		
 		categorie.get_node("ButonInapoi").connect("pressed", self, "stergere_lista_cuvinte")
 		buton_back = "stergere_lista_cuvinte"
 
 func stergere_lista_cuvinte():
-	get_node("Categorii").visible = true
-	if (has_node("Categorie")):
-		get_node("Categorie").queue_free()
+	if (get_node("Categorie/Titlu/Text").text != "Expresii"):
+		get_node("Categorii").visible = true
+	get_node("Categorie").queue_free()
 	if (!lista_mica):
 		buton_back = "ascunde_categorii_cuvinte"
 	else:
