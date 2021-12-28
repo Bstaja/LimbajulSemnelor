@@ -1,9 +1,26 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Tema/Tema.tres" type="Theme" id=1]
 [ext_resource path="res://Meniu/Titlu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Meniu/Background.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Meniu/ButonInapoi.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Tema/FontButonInapoi.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Tema/tema_btn_categorii.tres" type="StyleBox" id=6]
+[ext_resource path="res://Tema/FontButonModifica.tres" type="DynamicFont" id=7]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.886275, 0.443137, 0.113725, 1 )
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.137255, 0.137255, 0.137255, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_left = 5.0
+expand_margin_right = 5.0
 
 [node name="Categorii" type="Control"]
 anchor_right = 1.0
@@ -38,6 +55,31 @@ size_flags_vertical = 3
 theme = ExtResource( 1 )
 columns = 2
 
+[node name="AdaugaCategorie" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 0.2
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buton" type="Button" parent="AdaugaCategorie"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = 1.0
+margin_right = -15.0
+margin_bottom = -15.0
+custom_fonts/font = ExtResource( 5 )
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/disabled = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+text = "Creează o categorie nouă"
+
 [node name="ButonInapoi" parent="." instance=ExtResource( 4 )]
 anchor_top = 0.0
 anchor_right = 0.1
@@ -45,3 +87,27 @@ anchor_bottom = 0.1
 
 [node name="Titlu" parent="." instance=ExtResource( 2 )]
 anchor_left = 0.1
+grow_vertical = 0
+
+[node name="ButonModificare" type="Button" parent="."]
+anchor_left = 0.668
+anchor_right = 1.0
+anchor_bottom = 0.1
+margin_left = 177.04
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 7 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+text = "modifică"
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Meniu/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Meniu/Titlu.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.886275, 0.443137, 0.113725, 1 )
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="MeniuPrincipal" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+[node name="ListaButoane" type="ScrollContainer" parent="."]
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_right = -30.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ListaButoane"]
+margin_right = 660.0
+margin_bottom = 1296.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = -2
+alignment = 1
+
+[node name="Titlu" parent="." instance=ExtResource( 3 )]
+custom_styles/panel = SubResource( 1 )

@@ -5,8 +5,8 @@
 [ext_resource path="res://Meniu/Background.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Meniu/ButonInapoi.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Meniu/FormareProp.gd" type="Script" id=5]
-[ext_resource path="res://Tema/FontButonInapoi.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Tema/FontPlay.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Tema/tema_btn_categorii.tres" type="StyleBox" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 1 )
@@ -60,7 +60,6 @@ custom_constants/separation = 10
 anchor_top = 0.0
 anchor_right = 0.1
 anchor_bottom = 0.1
-custom_fonts/font = ExtResource( 6 )
 
 [node name="Start" type="Button" parent="."]
 anchor_left = 0.85
@@ -71,8 +70,8 @@ margin_right = -4.0
 margin_bottom = -4.0
 custom_fonts/font = ExtResource( 7 )
 custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 1 )
-custom_styles/focus = SubResource( 1 )
-custom_styles/disabled = SubResource( 1 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/pressed = ExtResource( 8 )
+custom_styles/focus = ExtResource( 8 )
+custom_styles/disabled = ExtResource( 8 )
+custom_styles/normal = ExtResource( 8 )
 text = "►"

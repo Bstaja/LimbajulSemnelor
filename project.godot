@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "ColorareLitera",
 "language": "GDScript",
 "path": "res://Tema/ColorareLitera.gd"
+}, {
+"base": "Control",
+"class": "SelectorCuvinte",
+"language": "GDScript",
+"path": "res://Meniu/SelectorCuvinte.gd"
 } ]
 _global_script_class_icons={
-"ColorareLitera": ""
+"ColorareLitera": "",
+"SelectorCuvinte": ""
 }
 
 [application]

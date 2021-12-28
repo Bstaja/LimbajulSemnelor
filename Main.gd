@@ -1,19 +1,5 @@
 extends Control
 
-class Sortare:
-	static func sort(a, b):
-		var alfabet := "aăâbcdefghiîjklmnopqrsștțuvwxyz"
-		a = a.rstrip("\n ").to_lower().replace("a ", "").replace("se ", "")
-		b = b.rstrip("\n ").to_lower().replace("a ", "").replace("se ", "")
-		var i = 0
-		var a_size = a.length()-1
-		var b_size = b.length()-1
-		while(a[i] == b[i] and i<a_size and i<b_size):
-			i+=1
-		if (alfabet.find(a[i])<alfabet.find(b[i])):
-			return true
-		return false
-
 #Datele care se afla in prezent in memorie
 var date_curente
 
@@ -104,6 +90,21 @@ var tema = load("res://Tema/Tema.tres")
 var lista_mica = false
 
 var buton_back = "inchidere_aplicatie"
+var buton_back_oprit = false
+
+class Sortare:
+	static func sort(a, b):
+		var alfabet := "aăâbcdefghiîjklmnopqrsștțuvwxyz"
+		a = a.rstrip("\n ").to_lower().replace("a ", "").replace("se ", "")
+		b = b.rstrip("\n ").to_lower().replace("a ", "").replace("se ", "")
+		var i = 0
+		var a_size = a.length()-1
+		var b_size = b.length()-1
+		while(a[i] == b[i] and i<a_size and i<b_size):
+			i+=1
+		if (alfabet.find(a[i])<alfabet.find(b[i])):
+			return true
+		return false
 
 func _ready():
 	btn_denumiri["categorii"].sort_custom(Sortare, "sort")
@@ -218,10 +219,15 @@ func creare_categorii_cuvinte():
 		b.add_stylebox_override("pressed", tema_butoane)
 		b.add_stylebox_override("hover", tema_butoane)
 		b.add_stylebox_override("focus", tema_butoane)
+		b.add_stylebox_override("disabled", tema_butoane)
 		btn_categorii.append(b)
 	
+	btn_categorii.remove(-1)
+	lista.get_child(lista.get_child_count()-1).visible = false
 	#Conectarea butonului Inapoi din meniu de categorii
 	categorii_cuvinte.get_node("ButonInapoi").connect("pressed", self, "ascunde_categorii_cuvinte")
+	categorii_cuvinte.get_node("ButonModificare").connect("pressed", self, "modifica_categorii")
+	categorii_cuvinte.get_node("AdaugaCategorie/Buton").connect("pressed", self, "afisare_meniu_creare_categ")
 	
 	#Ascunde categoriile (doar ce a pornit aplicatia si suntem in meniul principal, deci nu trebuie afisate categoriile)
 	ascunde_categorii_cuvinte()
@@ -233,6 +239,8 @@ func afisare_categorii_cuvinte():
 
 func ascunde_categorii_cuvinte():
 	get_node("Categorii").visible = false
+	if (get_node("Categorii/ButonModificare").text == "salvează"):
+		modifica_categorii()
 	$MeniuPrincipal.visible = true
 	if (lista_mica):
 		buton_back = "stergere_formare_prop"
@@ -240,8 +248,6 @@ func ascunde_categorii_cuvinte():
 		buton_back = "inchidere_aplicatie"
 
 func afisare_formare_prop():
-	var tema_titlu_mijloc = load("res://Tema/tema_titlu_mijloc.tres")
-	get_node("Categorii/Titlu").add_stylebox_override("panel", tema_titlu_mijloc)
 	
 	ascunde_meniu_principal()
 	var formare_prop = load("res://Meniu/FormareProp.tscn")
@@ -250,22 +256,11 @@ func afisare_formare_prop():
 	formare_prop.get_node("Titlu/Text").text = "Formare propoziții"
 	add_child(formare_prop)
 	
-	var categ = get_node("Categorii")
-	categ.anchor_top = .5
-	categ.get_node("ButonInapoi").visible = false
-	categ.get_node("Titlu").anchor_left = 0
-	categ.visible = true
-	
-	lista_mica = true
+	micsorare_lista_categorii()
+	get_node("Categorii").visible = true
 	buton_back = "stergere_formare_prop"
 
 func stergere_formare_prop():
-	var categ = get_node("Categorii")
-	categ.anchor_top = 0
-	categ.get_node("ButonInapoi").visible = true
-	categ.get_node("Titlu").anchor_left = .1
-	get_node("Categorii/ListaCategorii").scroll_vertical = 0
-	
 	if (get_node("FormareProp/Start").text == " X "):
 		get_node("FormareProp").redare_video()
 	
@@ -275,22 +270,13 @@ func stergere_formare_prop():
 	if (has_node("Categorie")):
 		get_node("Categorie").queue_free()
 	
-	lista_mica = false
-	categ.visible = false
-	
+	marire_lista_categorii()
+	get_node("Categorii").visible = false
 	buton_back = "inchidere_aplicatie"
-	get_node("Categorii/Titlu").add_stylebox_override("panel", null)
 
 func creare_lista_cuvinte(tip):
 	var conectare_la
 	var functie
-	
-	if (lista_mica):
-		conectare_la = get_node("FormareProp")
-		functie = "adaugare_cuvant"
-	else:
-		conectare_la = self
-		functie = "creare_video"
 	
 	if(dictionar.has(tip)):
 		date_curente = load("res://Dictionar/"+dictionar[tip]+".tres")
@@ -311,6 +297,11 @@ func creare_lista_cuvinte(tip):
 			date_curente.locatii = PoolStringArray(aux2)
 		
 		if (lista_mica):
+			conectare_la = get_node_or_null("FormareProp")
+			if (conectare_la == null):
+				conectare_la = get_node("CategorieNoua/SelectareCuvinte")
+				buton_back_oprit = false
+			functie = "adaugare_cuvant"
 			var tema_panel = load("res://Tema/tema_titlu_mijloc_cuv.tres")
 			var tema_btn_inapoi = load("res://Tema/tema_btn_inapo_mij.tres")
 			categorie.get_node("Titlu").add_stylebox_override("panel", tema_panel)
@@ -319,6 +310,9 @@ func creare_lista_cuvinte(tip):
 			categorie.get_node("ButonInapoi").add_stylebox_override("hover", tema_btn_inapoi)
 			categorie.get_node("ButonInapoi").add_stylebox_override("focus", tema_btn_inapoi)
 			categorie.anchor_top = .5
+		else:
+			conectare_la = self
+			functie = "creare_video"
 		
 		add_child(categorie)
 		categorie.get_node("Titlu/Text").text = tip.replace("\n", " ")
@@ -342,7 +336,11 @@ func stergere_lista_cuvinte():
 	if (!lista_mica):
 		buton_back = "ascunde_categorii_cuvinte"
 	else:
-		buton_back = "stergere_formare_prop"
+		if (get_node_or_null("FormareProp")!=null):
+			buton_back = "stergere_formare_prop"
+		else:
+			buton_back = "ascunde_creare_categ"
+			buton_back_oprit = true
 
 func creare_video(categorie, cuvant):
 	var fereastra_cuvant = load("res://Meniu/Cuvinte/Cuvant.tscn")
@@ -378,7 +376,6 @@ func creare_video(categorie, cuvant):
 		player_video.connect("finished", get_node("FormareProp"), "urmat_video")
 		buton_back = "oprire_video_succesive"
 	
-	
 	return fereastra_cuvant
 
 func stergere_video():
@@ -399,6 +396,27 @@ func ascunde_text_dactil():
 	get_node("TextDactileme").queue_free()
 	buton_back = "inchidere_aplicatie"
 
+func afisare_meniu_creare_categ():
+	var meniu = load("res://Meniu/CategorieNoua.tscn")
+	meniu = meniu.instance()
+	meniu.get_node("Titlu/Text").text = "Categorie nouă"
+	add_child(meniu)
+	
+	meniu.get_node("ButonInapoi").connect("pressed", self, "ascunde_creare_categ")
+	
+	modifica_categorii()
+	micsorare_lista_categorii()
+	
+	buton_back = "ascunde_creare_categ"
+
+func ascunde_creare_categ():
+	get_node("CategorieNoua").queue_free()
+	
+	modifica_categorii()
+	marire_lista_categorii()
+	
+	buton_back = "ascunde_categorii_cuvinte"
+
 func inchidere_aplicatie():
 	get_tree().quit()
 	
@@ -412,6 +430,47 @@ func oprire_video_succesive():
 		n.redare_video()
 		buton_back = "stergere_formare_prop"
 
+func modifica_categorii():
+	var categ = get_node("Categorii")
+	var lista_categ = categ.get_node("ListaCategorii/HSplitContainer")
+	var btn = categ.get_node("ButonModificare")
+	
+	if (btn.text == "modifică"):
+		btn.text = "salvează"
+		categ.get_node("AdaugaCategorie").visible = true
+		categ.get_node("ListaCategorii").anchor_top = .2
+		for i in lista_categ.get_children():
+			i.get_child(0).disabled = true
+	else:
+		btn.text = "modifică"
+		categ.get_node("AdaugaCategorie").visible = false
+		categ.get_node("ListaCategorii").anchor_top = .1
+		for i in lista_categ.get_children():
+			i.get_child(0).disabled = false
+
+func micsorare_lista_categorii():
+	if (lista_mica == false):
+		var categ = get_node("Categorii")
+		var tema_titlu_mijloc = load("res://Tema/tema_titlu_mijloc.tres")
+		categ.get_node("Titlu").add_stylebox_override("panel", tema_titlu_mijloc)
+		categ.get_node("ButonModificare").visible = false
+		categ.get_node("ListaCategorii").scroll_vertical = 0
+		categ.anchor_top = .5
+		categ.get_node("ButonInapoi").visible = false
+		categ.get_node("Titlu").anchor_left = 0
+		lista_mica = true
+
+func marire_lista_categorii():
+	if (lista_mica == true):
+		var categ = get_node("Categorii")
+		categ.anchor_top = 0
+		categ.get_node("ButonInapoi").visible = true
+		categ.get_node("ButonModificare").visible = true
+		categ.get_node("Titlu").anchor_left = .1
+		categ.get_node("ListaCategorii").scroll_vertical = 0
+		categ.get_node("Titlu").add_stylebox_override("panel", null)
+		lista_mica = false
+
 func _notification(what):
-	if (what==MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST or what==MainLoop.NOTIFICATION_WM_QUIT_REQUEST):
+	if (!buton_back_oprit and (what==MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST or what==MainLoop.NOTIFICATION_WM_QUIT_REQUEST)):
 		call_deferred(buton_back)

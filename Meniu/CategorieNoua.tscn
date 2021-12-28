@@ -1,0 +1,127 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Tema/FontButonInapoi.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Meniu/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Meniu/Titlu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Tema/tema_btn_categorii.tres" type="StyleBox" id=4]
+[ext_resource path="res://Meniu/SelectareCuvinte.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Meniu/ButonInapoi.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Meniu/CategorieNoua.gd" type="Script" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.886275, 0.443137, 0.113725, 1 )
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_top = 2
+border_color = Color( 0.85098, 0.419608, 0.0980392, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+
+[node name="CategorieNoua" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+[node name="CasetaText" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.2
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="LineEdit" parent="CasetaText"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+custom_styles/read_only = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+align = 1
+placeholder_text = "Introduceți numele categoriei aici"
+placeholder_alpha = 0.68
+caret_blink = true
+caret_blink_speed = 0.4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Titlu" parent="." instance=ExtResource( 3 )]
+anchor_left = 0.1
+
+[node name="ButonAdaugare" type="Button" parent="."]
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_right = -30.0
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+text = "Adaugă cuvinte"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OK" type="Button" parent="."]
+anchor_left = 0.85
+anchor_right = 1.0
+anchor_bottom = 0.1
+margin_top = 30.0
+margin_right = -20.0
+margin_bottom = -30.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+text = "Ok"
+
+[node name="ButonInapoi" parent="." instance=ExtResource( 6 )]
+anchor_top = 0.0
+anchor_right = 0.1
+anchor_bottom = 0.1
+
+[node name="OptiuneSortare" type="Label" parent="."]
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.3
+margin_left = 30.0
+margin_right = -30.0
+text = "Ordonare alfabetică:"
+valign = 1
+
+[node name="Buton" type="Button" parent="OptiuneSortare"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -50.0
+grow_horizontal = 0
+grow_vertical = 2
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+text = " Da "
+
+[node name="SelectareCuvinte" parent="." instance=ExtResource( 5 )]
+anchor_top = 0.3
+anchor_bottom = 0.9
+margin_bottom = -10.0
