@@ -223,7 +223,6 @@ func creare_categorii_cuvinte():
 		btn_categorii.append(b)
 	
 	btn_categorii.remove(-1)
-	lista.get_child(lista.get_child_count()-1).visible = false
 	#Conectarea butonului Inapoi din meniu de categorii
 	categorii_cuvinte.get_node("ButonInapoi").connect("pressed", self, "ascunde_categorii_cuvinte")
 	categorii_cuvinte.get_node("ButonModificare").connect("pressed", self, "modifica_categorii")
@@ -318,13 +317,28 @@ func creare_lista_cuvinte(tip):
 		categorie.get_node("Titlu/Text").text = tip.replace("\n", " ")
 		
 		var lista = categorie.get_node("ListaCuvinte/VBoxContainer")
+		var tema_t = load("res://Tema/tema_btn_general.tres")
+		var tema_b = StyleBoxEmpty.new()
 		
 		for btn in date_curente.cuvinte:
 			var b = Button.new()
-			lista.add_child(b)
+			var t = Label.new()
+			t.autowrap = true
+			t.align = Label.ALIGN_CENTER
+			t.valign = Label.VALIGN_CENTER
+			t.text = btn
+			t.add_stylebox_override("normal", tema_t)
+			t.add_child(b)
+			
+			lista.add_child(t)
 			b.mouse_filter = Control.MOUSE_FILTER_PASS
-			b.text = btn
-			b.size_flags_horizontal = SIZE_EXPAND_FILL
+			b.set_anchors_and_margins_preset(Control.PRESET_WIDE)
+#			b.size_flags_horizontal = SIZE_EXPAND_FILL
+#			b.size_flags_vertical = SIZE_EXPAND_FILL
+			b.add_stylebox_override("normal", tema_b)
+			b.add_stylebox_override("pressed", tema_b)
+			b.add_stylebox_override("hover", tema_b)
+			b.add_stylebox_override("focus", tema_b)
 			b.connect("pressed", conectare_la, functie, [tip, btn])
 		categorie.get_node("ButonInapoi").connect("pressed", self, "stergere_lista_cuvinte")
 		buton_back = "stergere_lista_cuvinte"
