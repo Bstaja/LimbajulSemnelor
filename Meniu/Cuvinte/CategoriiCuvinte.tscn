@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Tema/Tema.tres" type="Theme" id=1]
 [ext_resource path="res://Meniu/Titlu.tscn" type="PackedScene" id=2]
@@ -7,9 +7,12 @@
 [ext_resource path="res://Tema/FontButonInapoi.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Tema/tema_btn_categorii.tres" type="StyleBox" id=6]
 [ext_resource path="res://Tema/FontButonModifica.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Meniu/Cuvinte/CategoriiCuvinte.gd" type="Script" id=8]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.886275, 0.443137, 0.113725, 1 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
@@ -26,6 +29,7 @@ expand_margin_right = 5.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -33,7 +37,7 @@ __meta__ = {
 [node name="Background" parent="." instance=ExtResource( 3 )]
 
 [node name="ListaCategorii" type="ScrollContainer" parent="."]
-anchor_top = 0.1
+anchor_top = 0.18
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 15.0
@@ -49,16 +53,42 @@ __meta__ = {
 
 [node name="HSplitContainer" type="GridContainer" parent="ListaCategorii"]
 margin_right = 690.0
-margin_bottom = 1256.0
+margin_bottom = 1140.8
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 1 )
 columns = 2
 
+[node name="CasetaCautare" type="Panel" parent="."]
+anchor_top = 0.02
+anchor_right = 1.0
+anchor_bottom = 0.18
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="LineEdit" parent="CasetaCautare"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = 1.0
+margin_right = -15.0
+margin_bottom = -15.0
+focus_mode = 1
+custom_fonts/font = ExtResource( 5 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+align = 1
+placeholder_text = "Căutare..."
+caret_blink = true
+
 [node name="AdaugaCategorie" type="Panel" parent="."]
 visible = false
+anchor_top = 0.02
 anchor_right = 1.0
-anchor_bottom = 0.2
+anchor_bottom = 0.18
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -99,6 +129,7 @@ margin_right = -30.0
 margin_bottom = -30.0
 grow_horizontal = 0
 grow_vertical = 0
+focus_mode = 1
 theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 7 )
 custom_styles/hover = SubResource( 3 )
@@ -111,3 +142,6 @@ expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="text_changed" from="CasetaCautare/Text" to="." method="text_cautare_schimbat"]
+[connection signal="text_entered" from="CasetaCautare/Text" to="." method="_on_Text_text_entered"]

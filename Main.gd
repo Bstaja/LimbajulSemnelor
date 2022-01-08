@@ -1,7 +1,7 @@
 extends Control
 
 #Datele care se afla in prezent in memorie
-var date_curente
+var date_curente = load("res://Dictionar/CategorieGenerica.tres")
 
 #Numele resurselor din folderul dictionar
 var dictionar = {
@@ -31,8 +31,7 @@ var dictionar = {
 #Dictionar care contine denumirile tuturor butoanelor din aplicatie
 var btn_denumiri = {
 	"meniu": [
-		"Cuvinte", 
-		"Expresii",
+		"Dicționar", 
 		"Formare propoziții", 
 		"Text->dactileme", 
 		"Setări aplicație", 
@@ -59,6 +58,7 @@ var btn_denumiri = {
 		"Numerele",
 		"Prepoziții",
 		"Alimente",
+		"Expresii",
 	],
 }
 
@@ -66,12 +66,17 @@ var categorii_nesortate = [
 	"Zilele\nsăptămânii",
 	"Lunile\nanului",
 	"Numerele",
+	
+	
+	"Cuvinte găsite"
 ]
+
+var categorii_utilizator = []
+var nume_fisiere = []
 
 #Enumerator pt butoanele din meniul principal (trebuie puse in ordinea in care au fost scrise mai sus)
 enum meniu	{
 	CUVINTE,
-	EXPRESII,
 	FORM_PROP,
 	TEXT_DACTILEME,
 	SETARI,
@@ -107,7 +112,14 @@ class Sortare:
 		return false
 
 func _ready():
-	btn_denumiri["categorii"].sort_custom(Sortare, "sort")
+	var dir = Directory.new()
+	if (!dir.dir_exists("user://Categorii")):
+		dir.make_dir("user://Categorii")
+	else:
+		if (dir.file_exists("user://Categorii/temp.data")):
+			dir.remove("user://Categorii/temp.data")
+	
+	incarca_categorii_utilizator()
 	
 	theme = tema
 	
@@ -150,9 +162,9 @@ func creare_meniu_principal():
 	
 	#Conectarea butoanelor din meniu la functii
 	btn_meniu[meniu.CUVINTE].connect("pressed", self, "afisare_categorii_cuvinte")
-	btn_meniu[meniu.EXPRESII].connect("pressed", self, "creare_lista_cuvinte", ["Expresii"])
 	btn_meniu[meniu.FORM_PROP].connect("pressed", self, "afisare_formare_prop")
 	btn_meniu[meniu.TEXT_DACTILEME].connect("pressed", self, "afisare_text_dactil")
+	btn_meniu[meniu.SETARI].connect("pressed", self, "afisare_setari")
 	btn_meniu[meniu.IESIRE].connect("pressed", self, "inchidere_aplicatie")
 
 func afisare_meniu_principal():
@@ -162,7 +174,20 @@ func afisare_meniu_principal():
 func ascunde_meniu_principal():
 	$MeniuPrincipal.visible = false
 
+func afisare_setari():
+	var setari = load("res://Meniu/Setari.tscn")
+	setari = setari.instance()
+	add_child(setari)
+	setari.get_node("Titlu/Text").text = "Setări aplicație"
+	setari.get_node("ButonInapoi").connect("pressed", self, "ascunde_setari")
+	buton_back = "ascunde_setari"
+
+func ascunde_setari():
+	get_node("Setari").queue_free()
+	buton_back = "inchidere_aplicatie"
+
 func creare_categorii_cuvinte():
+	btn_denumiri["categorii"].sort_custom(Sortare, "sort")
 	#Incarca categoriile
 	var categorii_cuvinte = load("res://Meniu/Cuvinte/CategoriiCuvinte.tscn")
 	#Creeaza categoriile
@@ -174,7 +199,7 @@ func creare_categorii_cuvinte():
 	var lista = categorii_cuvinte.get_node("ListaCategorii/HSplitContainer")
 	
 	#Setare titlu
-	categorii_cuvinte.get_node("Titlu/Text").text = "Categorii Cuvinte"
+	categorii_cuvinte.get_node("Titlu/Text").text = "Categorii"
 	
 	var rez_ecran = rect_size
 	var tema_butoane = load("res://Tema/tema_btn_categorii.tres")
@@ -222,7 +247,6 @@ func creare_categorii_cuvinte():
 		b.add_stylebox_override("disabled", tema_butoane)
 		btn_categorii.append(b)
 	
-	btn_categorii.remove(-1)
 	#Conectarea butonului Inapoi din meniu de categorii
 	categorii_cuvinte.get_node("ButonInapoi").connect("pressed", self, "ascunde_categorii_cuvinte")
 	categorii_cuvinte.get_node("ButonModificare").connect("pressed", self, "modifica_categorii")
@@ -237,7 +261,10 @@ func afisare_categorii_cuvinte():
 	buton_back = "ascunde_categorii_cuvinte"
 
 func ascunde_categorii_cuvinte():
+	if (has_node("Categorie")):
+		get_node("Categorie").visible = false
 	get_node("Categorii").visible = false
+	get_node("Categorii/CasetaCautare/Text").text = ""
 	if (get_node("Categorii/ButonModificare").text == "salvează"):
 		modifica_categorii()
 	$MeniuPrincipal.visible = true
@@ -273,12 +300,12 @@ func stergere_formare_prop():
 	get_node("Categorii").visible = false
 	buton_back = "inchidere_aplicatie"
 
-func creare_lista_cuvinte(tip):
+func creare_lista_cuvinte(tip:String):
 	var conectare_la
 	var functie
 	
 	if(dictionar.has(tip)):
-		date_curente = load("res://Dictionar/"+dictionar[tip]+".tres")
+		incarcare_date(tip)
 		get_node("Categorii").visible = false
 		var categorie = load("res://Meniu/Cuvinte/Categorie.tscn")
 		categorie = categorie.instance()
@@ -323,6 +350,7 @@ func creare_lista_cuvinte(tip):
 		for btn in date_curente.cuvinte:
 			var b = Button.new()
 			var t = Label.new()
+			b.focus_mode = Control.FOCUS_CLICK
 			t.autowrap = true
 			t.align = Label.ALIGN_CENTER
 			t.valign = Label.VALIGN_CENTER
@@ -340,13 +368,13 @@ func creare_lista_cuvinte(tip):
 			b.add_stylebox_override("hover", tema_b)
 			b.add_stylebox_override("focus", tema_b)
 			b.connect("pressed", conectare_la, functie, [tip, btn])
-		categorie.get_node("ButonInapoi").connect("pressed", self, "stergere_lista_cuvinte")
+		categorie.get_node("ButonInapoi").connect("pressed", self, "stergere_lista_cuvinte", [], CONNECT_DEFERRED)
 		buton_back = "stergere_lista_cuvinte"
 
 func stergere_lista_cuvinte():
-	if (get_node("Categorie/Titlu/Text").text != "Expresii"):
-		get_node("Categorii").visible = true
-	get_node("Categorie").queue_free()
+	get_node("Categorii").visible = true
+	get_node("Categorie").free()
+	
 	if (!lista_mica):
 		buton_back = "ascunde_categorii_cuvinte"
 	else:
@@ -418,6 +446,10 @@ func afisare_meniu_creare_categ():
 	
 	meniu.get_node("ButonInapoi").connect("pressed", self, "ascunde_creare_categ")
 	
+	for i in get_node("Categorii/ListaCategorii/HSplitContainer").get_children():
+		if (categorii_utilizator.find(i.get_child(1).text)>-1):
+			i.visible = false
+	
 	modifica_categorii()
 	micsorare_lista_categorii()
 	
@@ -425,6 +457,9 @@ func afisare_meniu_creare_categ():
 
 func ascunde_creare_categ():
 	get_node("CategorieNoua").queue_free()
+	
+	for i in get_node("Categorii/ListaCategorii/HSplitContainer").get_children():
+		i.visible = true
 	
 	modifica_categorii()
 	marire_lista_categorii()
@@ -435,8 +470,18 @@ func inchidere_aplicatie():
 	get_tree().quit()
 	
 func incarcare_date(tip):
-	if(tip!=date_curente.nume_categorie and dictionar.has(tip)):
-		date_curente = load("res://Dictionar/"+dictionar[tip]+".tres")
+	if((tip!=date_curente.nume_categorie or tip == "Cuvinte găsite") and dictionar.has(tip)):
+		if (!dictionar[tip].ends_with(".data")):
+			date_curente = load("res://Dictionar/"+dictionar[tip]+".tres")
+		else:
+			var f = File.new()
+			var d
+			f.open("user://Categorii/"+dictionar[tip], File.READ)
+			d = f.get_var(true)
+			date_curente = load("res://Dictionar/CategorieGenerica.tres")
+			date_curente.cuvinte = d["cuvinte"]
+			date_curente.locatii = d["locatii"]
+			date_curente.nume_categorie = d["denumire"]
 
 func oprire_video_succesive():
 	var n = get_node_or_null("FormareProp")
@@ -452,15 +497,52 @@ func modifica_categorii():
 	if (btn.text == "modifică"):
 		btn.text = "salvează"
 		categ.get_node("AdaugaCategorie").visible = true
-		categ.get_node("ListaCategorii").anchor_top = .2
+		categ.get_node("ListaCategorii").anchor_top = .18
+		
+		var aspect_sus = load("res://Tema/tema_btn_sus.tres")
+		var aspect_jos = load("res://Tema/tema_btn_jos.tres")
+		var font = load("res://Tema/FontButonModifica.tres")
+		
 		for i in lista_categ.get_children():
 			i.get_child(0).disabled = true
+			if (categorii_utilizator.has(i.get_child(1).text)):
+				var b = Button.new()
+				i.get_child(0).add_child(b)
+				b.anchor_top = 0
+				b.anchor_bottom = .2
+				b.anchor_left = 0
+				b.anchor_right = 1
+				b.add_font_override("font", font)
+				b.add_stylebox_override("normal", aspect_sus)
+				b.add_stylebox_override("pressed", aspect_sus)
+				b.add_stylebox_override("focus", aspect_sus)
+				b.add_stylebox_override("hover", aspect_sus)
+				b.text = "șterge"
+				b.connect("pressed", self, "sterge_categorie", [i.get_child(1).text, i])
+				
+				b = Button.new()
+				i.get_child(0).add_child(b)
+				b.anchor_top = .8
+				b.anchor_bottom = 1
+				b.anchor_left = 0
+				b.anchor_right = 1
+				b.add_font_override("font", font)
+				b.add_stylebox_override("normal", aspect_jos)
+				b.add_stylebox_override("pressed", aspect_jos)
+				b.add_stylebox_override("focus", aspect_jos)
+				b.add_stylebox_override("hover", aspect_jos)
+				b.text = "modifică"
+				b.connect("pressed", self, "modifica_categorie", [i.get_child(1).text, i])
+			
 	else:
 		btn.text = "modifică"
 		categ.get_node("AdaugaCategorie").visible = false
-		categ.get_node("ListaCategorii").anchor_top = .1
+		categ.get_node("ListaCategorii").anchor_top = .18
 		for i in lista_categ.get_children():
 			i.get_child(0).disabled = false
+			if (categorii_utilizator.has(i.get_child(1).text)):
+				for j in i.get_child(0).get_children():
+					j.queue_free()
 
 func micsorare_lista_categorii():
 	if (lista_mica == false):
@@ -468,7 +550,9 @@ func micsorare_lista_categorii():
 		var tema_titlu_mijloc = load("res://Tema/tema_titlu_mijloc.tres")
 		categ.get_node("Titlu").add_stylebox_override("panel", tema_titlu_mijloc)
 		categ.get_node("ButonModificare").visible = false
+		categ.get_node("CasetaCautare").visible = false
 		categ.get_node("ListaCategorii").scroll_vertical = 0
+		categ.get_node("ListaCategorii").anchor_top = .1
 		categ.anchor_top = .5
 		categ.get_node("ButonInapoi").visible = false
 		categ.get_node("Titlu").anchor_left = 0
@@ -480,10 +564,61 @@ func marire_lista_categorii():
 		categ.anchor_top = 0
 		categ.get_node("ButonInapoi").visible = true
 		categ.get_node("ButonModificare").visible = true
+		categ.get_node("CasetaCautare").visible = true
 		categ.get_node("Titlu").anchor_left = .1
 		categ.get_node("ListaCategorii").scroll_vertical = 0
+		categ.get_node("ListaCategorii").anchor_top = .18
 		categ.get_node("Titlu").add_stylebox_override("panel", null)
 		lista_mica = false
+
+func incarca_categorii_utilizator():
+	var dir = Directory.new()
+	var fisiere = []
+	if dir.open("user://Categorii") == OK:
+		dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if (file_name.length()>2):
+			fisiere.append(file_name)
+		file_name = dir.get_next()
+	
+	var fisier = File.new()
+	var date
+	
+	for i in fisiere:
+		fisier.open("user://Categorii/"+i, File.READ)
+		date = fisier.get_var(true)
+		btn_denumiri["categorii"].append(date["denumire"])
+		categorii_utilizator.append(date["denumire"])
+		nume_fisiere.append(i)
+		dictionar[date["denumire"]] = i
+		if (date["alfabetic"]==false):
+			categorii_nesortate.append(date["denumire"])
+		fisier.close()
+
+func sterge_categorie(cat, obiect):
+	var locatie = categorii_utilizator.find(cat)
+	var dir = Directory.new()
+	dir.remove("user://Categorii/"+nume_fisiere[locatie])
+	categorii_utilizator.remove(locatie)
+	nume_fisiere.remove(locatie)
+	categorii_nesortate.erase(cat)
+	btn_denumiri["categorii"].erase(cat)
+	obiect.queue_free()
+
+func modifica_categorie(cat, obiect):
+	afisare_meniu_creare_categ()
+	get_node("CategorieNoua/Titlu/Text").text = "Modifică categoria"
+	get_node("CategorieNoua/CasetaText/Text").text = cat
+	get_node("CategorieNoua").sterge_categ = cat
+	get_node("CategorieNoua").sterge_obiect = obiect
+	incarcare_date(cat)
+	if (categorii_nesortate.has(cat)):
+		get_node("CategorieNoua").sortare_alfabetica()
+	
+	for i in date_curente.cuvinte:
+		get_node("CategorieNoua/SelectareCuvinte").adaugare_cuvant(cat, i)
+	
 
 func _notification(what):
 	if (!buton_back_oprit and (what==MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST or what==MainLoop.NOTIFICATION_WM_QUIT_REQUEST)):

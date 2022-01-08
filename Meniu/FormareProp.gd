@@ -14,7 +14,8 @@ func redare_video():
 	if ($Start.text == " X "):
 		#Opriera videoclipurilor
 		$Start.text = " ► "
-		get_parent().stergere_lista_cuvinte()
+		if (get_parent().has_node("Categorie")):
+			get_parent().stergere_lista_cuvinte()
 		$Propozitie/VBoxContainer.get_child(v_curent-1).get_child(1).get_child(0).set("custom_colors/font_color", Color.white)
 		v_curent = 0
 		#Daca sunt videoclipuri de eliminat din memorie, se vor elimina

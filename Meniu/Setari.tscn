@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Meniu/Setari.gd" type="Script" id=1]
+[ext_resource path="res://Meniu/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Meniu/Titlu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Meniu/ButonInapoi.tscn" type="PackedScene" id=4]
+
+[node name="Setari" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+
+[node name="ListaButoane" type="ScrollContainer" parent="."]
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_right = -30.0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ListaButoane"]
+margin_right = 660.0
+margin_bottom = 1296.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = -2
+alignment = 1
+
+[node name="Button" type="Button" parent="ListaButoane/VBoxContainer"]
+margin_top = 638.0
+margin_right = 660.0
+margin_bottom = 658.0
+text = "Șterge datele (apasă de 2 ori)"
+
+[node name="ButonInapoi" parent="." instance=ExtResource( 4 )]
+anchor_top = 0.0
+anchor_right = 0.1
+anchor_bottom = 0.1
+grow_vertical = 2
+
+[node name="Titlu" parent="." instance=ExtResource( 3 )]
+anchor_left = 0.1

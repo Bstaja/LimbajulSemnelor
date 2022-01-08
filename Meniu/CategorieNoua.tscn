@@ -125,3 +125,5 @@ text = " Da "
 anchor_top = 0.3
 anchor_bottom = 0.9
 margin_bottom = -10.0
+
+[connection signal="pressed" from="OK" to="." method="salveaza_categ_noua"]
