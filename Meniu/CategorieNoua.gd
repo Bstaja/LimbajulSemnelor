@@ -40,32 +40,32 @@ func sortare_alfabetica():
 
 
 func salveaza_categ_noua():
-	if (sterge_categ!=null):
-		get_parent().sterge_categorie(sterge_categ, sterge_obiect)
+	#Formarea dictionarului date care contine
+	#datele introduse de utilizator
 	var date = {}
-	var fisier = File.new()
-	
 	date["denumire"] = $CasetaText/Text.text
 	date["cuvinte"] = []
 	date["locatii"] = []
 	date["alfabetic"] = false
-	
+	date["cuvinte"].append_array($SelectareCuvinte.denumiri)
+	date["locatii"].append_array(incarca_locatii($SelectareCuvinte.categorii, $SelectareCuvinte.denumiri))
+	if ($OptiuneSortare/Buton.text == " Da "):
+		date["alfabetic"] = true
+	#Stergerea fisierului vechi daca categoria a fost modificata
+	if (sterge_categ!=null):
+		get_parent().sterge_categorie(sterge_categ, sterge_obiect)
+	#Crearea unui nou fisier
 	var i = 0
+	var fisier = File.new()
+	#Se stabileste denumirea fisierului in fuctie de fisierele deja existente
 	while(fisier.file_exists("user://Categorii/"+str(i)+".data")):
 		i+=1
 	fisier.open("user://Categorii/"+str(i)+".data", File.WRITE)
-	
-	date["cuvinte"].append_array($SelectareCuvinte.denumiri)
-	date["locatii"].append_array(incarca_locatii($SelectareCuvinte.categorii, $SelectareCuvinte.denumiri))
-	
-	if ($OptiuneSortare/Buton.text == " Da "):
-		date["alfabetic"] = true
-	
+	#Daca datele introduse sunt valide, se salveaza categoria in fisier
 	if (date["denumire"]!="" and date["cuvinte"].size()>0):
 		fisier.store_var(date, true)
-	
 	fisier.close()
-	
+	#Se adauga categoria noua
 	get_parent().btn_denumiri["categorii"].append(date["denumire"])
 	get_parent().categorii_utilizator.append(date["denumire"])
 	get_parent().dictionar[date["denumire"]] = str(i)+".data"
@@ -78,6 +78,8 @@ func salveaza_categ_noua():
 	get_parent().get_node("Categorii").visible = true
 	
 	get_parent().ascunde_creare_categ()
+	
+	get_parent().incarcare_date(get_parent().dictionar[date["denumire"]])
 	
 	
 func incarca_locatii(categorii, cuvinte):

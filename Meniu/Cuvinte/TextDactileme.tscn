@@ -99,6 +99,7 @@ anchor_bottom = 0.5
 margin_top = -39.0
 margin_bottom = 39.0
 text = "Text -> Dactileme"
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

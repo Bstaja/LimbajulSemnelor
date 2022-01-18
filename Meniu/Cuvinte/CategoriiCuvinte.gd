@@ -1,7 +1,7 @@
 extends Control
 
-var de_inlocuit = "aăâîșț"
-var inlocuit_cu = "aaaist"
+var de_inlocuit = "ăâîșț"
+var inlocuit_cu = "aaist"
 
 class Sortare:
 	static func sort(a, b):
@@ -10,20 +10,27 @@ class Sortare:
 		return false
 
 func cautare(cuvant:String):
+	#Se transformă în minuscule literele și se înlocuiesc diacriticele
 	cuvant = cuvant.to_lower()
 	for j in range(de_inlocuit.length()):
 		cuvant = cuvant.replace(de_inlocuit[j], inlocuit_cu[j])
+	#Referință la categorii
 	var categorii = get_parent().dictionar
+	#Vector cuvinte găsite
 	var cuv_gasite = []
+	#Parcurgerea tuturor cuvintelor din categoriile predefinite
 	for i in categorii:
+		#Ignorarea categoriilor create de utilizator (toate au terminația .data
 		if (!categorii[i].ends_with(".data")):
+			#Se incarca datele din categorie curentă
 			var date = load("res://Dictionar/"+categorii[i]+".tres")
 			for k in range(date.cuvinte.size()):
+				#Se transformă în minuscule literele și se înlocuiesc diacriticele
 				var de_comparat = date.cuvinte[k].to_lower()
-				
 				for j in range(de_inlocuit.length()):
 					de_comparat = de_comparat.replace(de_inlocuit[j], inlocuit_cu[j])
-				
+				#Se verifică similaritate cuvintelor și daca cuvântul curent este subșir
+				#al cuvântului care se caută
 				var similaritate = cuvant.similarity(de_comparat)
 				if (similaritate>.5 or de_comparat.find(cuvant)>-1):
 					cuv_gasite.append([date.cuvinte[k], date.folder+"/"+date.locatii[k], similaritate])
@@ -34,23 +41,24 @@ func cautare(cuvant:String):
 func text_cautare_schimbat(new_text):
 	$CasetaCautare/Text.virtual_keyboard_enabled = false
 	if (new_text.length()>=2):
+		#Cuvinte găsite
 		var cuv = cautare(new_text)
+		#Dicționar ce cuprinde datele care urmează să fie salvate
 		var date = {}
 		var fisier = File.new()
-		
+		#Completarea datelor
 		date["denumire"] = "Cuvinte găsite"
 		date["cuvinte"] = []
 		date["locatii"] = []
 		date["alfabetic"] = false
-		
-		fisier.open("user://Categorii/temp.data", File.WRITE)
-		
 		for i in cuv:
 			date["cuvinte"].append(i[0])
 			date["locatii"].append(i[1])
-		
+		#Salvarea în fișier
+		fisier.open("user://Categorii/temp.data", File.WRITE)
 		fisier.store_var(date, true)
 		fisier.close()
+		
 		get_parent().dictionar["Cuvinte găsite"] = "temp.data"
 		if (get_parent().has_node("Categorie")):
 			get_parent().stergere_lista_cuvinte()

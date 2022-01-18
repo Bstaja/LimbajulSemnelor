@@ -123,24 +123,23 @@ func _ready():
 	
 	theme = tema
 	
-	#Rezolutie fixa
+	#Obtinerea rezolutiei ecranului
 	var rez_ecran = OS.window_size
-	print(rez_ecran)
+	#Calcularea raportului de aspect
 	var ratio = rez_ecran.y/rez_ecran.x
-	print(ratio)
-	
+	#Nu avem nevoie de ancore, prin umrare
+	#le-am atribuit la toate valoarea 0
 	anchor_top = 0
 	anchor_bottom = 0
 	anchor_right = 0
 	anchor_left = 0
+	#Setarea marginilor ferestrei principale
 	margin_top = 0
 	margin_left = 0
 	margin_bottom = 720*ratio
 	margin_right = 720
 	
 	$ViewPort.get_viewport().size = rect_size
-	
-	print(rect_size)
 	
 	creare_meniu_principal()
 	creare_categorii_cuvinte()
@@ -470,7 +469,7 @@ func inchidere_aplicatie():
 	get_tree().quit()
 	
 func incarcare_date(tip):
-	if((tip!=date_curente.nume_categorie or tip == "Cuvinte găsite") and dictionar.has(tip)):
+	if(dictionar.has(tip) and (tip!=date_curente.nume_categorie or tip == "Cuvinte găsite" or dictionar[tip].ends_with(".data"))):
 		if (!dictionar[tip].ends_with(".data")):
 			date_curente = load("res://Dictionar/"+dictionar[tip]+".tres")
 		else:
@@ -510,7 +509,7 @@ func modifica_categorii():
 				i.get_child(0).add_child(b)
 				b.anchor_top = 0
 				b.anchor_bottom = .2
-				b.anchor_left = 0
+				b.anchor_left = 0	
 				b.anchor_right = 1
 				b.add_font_override("font", font)
 				b.add_stylebox_override("normal", aspect_sus)
@@ -572,19 +571,19 @@ func marire_lista_categorii():
 		lista_mica = false
 
 func incarca_categorii_utilizator():
+	#Obtinerea unei liste cu toate fisierele din folderul Categorii
 	var dir = Directory.new()
 	var fisiere = []
-	if dir.open("user://Categorii") == OK:
-		dir.list_dir_begin()
+	dir.open("user://Categorii")
+	dir.list_dir_begin()
 	var file_name = dir.get_next()
 	while file_name != "":
 		if (file_name.length()>2):
 			fisiere.append(file_name)
 		file_name = dir.get_next()
-	
+	#Citirea din fisiere
 	var fisier = File.new()
 	var date
-	
 	for i in fisiere:
 		fisier.open("user://Categorii/"+i, File.READ)
 		date = fisier.get_var(true)
