@@ -35,11 +35,10 @@ config/quit_on_go_back=false
 
 [display]
 
-window/size/width=720
-window/size/height=1440
+window/size/width=1280
+window/size/height=1000
 window/energy_saving/keep_screen_on=false
 window/handheld/orientation="portrait"
-window/stretch/mode="viewport"
 
 [gui]
 

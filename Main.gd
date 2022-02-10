@@ -123,26 +123,29 @@ func _ready():
 	
 	theme = tema
 	
-	#Obtinerea rezolutiei ecranului
-	var rez_ecran = OS.window_size
-	#Calcularea raportului de aspect
-	var ratio = rez_ecran.y/rez_ecran.x
-	#Nu avem nevoie de ancore, prin umrare
-	#le-am atribuit la toate valoarea 0
-	anchor_top = 0
-	anchor_bottom = 0
-	anchor_right = 0
-	anchor_left = 0
-	#Setarea marginilor ferestrei principale
-	margin_top = 0
-	margin_left = 0
-	margin_bottom = 720*ratio
-	margin_right = 720
-	
-	$ViewPort.get_viewport().size = rect_size
+#	#Obtinerea rezolutiei ecranului
+#	var rez_ecran = OS.window_size
+#	#Calcularea raportului de aspect
+#	var ratio = rez_ecran.y/rez_ecran.x
+#	#Nu avem nevoie de ancore, prin umrare
+#	#le-am atribuit la toate valoarea 0
+#	anchor_top = 0
+#	anchor_bottom = 0
+#	anchor_right = 0
+#	anchor_left = 0
+#	#Setarea marginilor ferestrei principale
+#	margin_top = 0
+#	margin_left = 0
+#	margin_bottom = 720*ratio
+#	margin_right = 720
+#
+#	$ViewPort.get_viewport().size = rect_size
+	$ViewPort.queue_free()
 	
 	creare_meniu_principal()
 	creare_categorii_cuvinte()
+	
+	get_tree().get_root().connect("size_changed", self, "redimensionare_fereastra")
 
 func creare_meniu_principal():
 	#referinta lista meniu
@@ -224,7 +227,7 @@ func creare_categorii_cuvinte():
 		
 		panel.size_flags_horizontal = SIZE_EXPAND_FILL
 		panel.size_flags_vertical = SIZE_SHRINK_CENTER
-		panel.rect_min_size = Vector2(0, rez_ecran.y/5)
+		panel.rect_min_size = Vector2(298, 298)
 		panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		
 		
@@ -253,6 +256,7 @@ func creare_categorii_cuvinte():
 	
 	#Ascunde categoriile (doar ce a pornit aplicatia si suntem in meniul principal, deci nu trebuie afisate categoriile)
 	ascunde_categorii_cuvinte()
+	redimensionare_fereastra()
 
 func afisare_categorii_cuvinte():
 	$MeniuPrincipal.visible = false
@@ -388,22 +392,18 @@ func creare_video(categorie, cuvant):
 	fereastra_cuvant = fereastra_cuvant.instance()
 	#print("res://ResurseVideo/"+date_curente.folder+"/"+date_curente.locatii[Array(date_curente.cuvinte).find(cuvant)]+".webm")
 	var video = load("res://ResurseVideo/"+date_curente.folder+"/"+date_curente.locatii[Array(date_curente.cuvinte).find(cuvant)]+".webm")
-	var rez_ecran = rect_size
+	var rez_ecran = OS.window_size
 	var player_video = fereastra_cuvant.get_node("Video/VideoPlayer")
 	
 	add_child(fereastra_cuvant)
 	player_video.stream = video
-	var rez_video = player_video.get_video_texture().get_size()
-	var ratio = rez_video.y/rez_video.x
-	player_video.margin_top = -rez_ecran.x*ratio/2
-	player_video.margin_bottom = player_video.margin_top*(-1)
+
 	
 	if (!lista_mica):
 		get_node("Categorie").visible = false
 		
 		player_video.play()
 		
-		fereastra_cuvant.dimensionare_buton_replay(rez_ecran.x/8)
 		fereastra_cuvant.get_node("Denumire/Text").text = cuvant
 		fereastra_cuvant.get_node("ButonInapoi").connect("pressed", self, "stergere_video")
 		fereastra_cuvant.get_node("Video/Replay/Buton").connect("pressed", fereastra_cuvant, "reluare_video")
@@ -412,10 +412,13 @@ func creare_video(categorie, cuvant):
 	else:
 		fereastra_cuvant.visible = false
 		fereastra_cuvant.anchor_top = .5
+		fereastra_cuvant.redimensionare_fereastra()
+		fereastra_cuvant.get_node("Video").anchor_top = 0
 		fereastra_cuvant.get_node("Denumire").visible = false
 		fereastra_cuvant.get_node("ButonInapoi").visible = false
 		player_video.connect("finished", get_node("FormareProp"), "urmat_video")
 		buton_back = "oprire_video_succesive"
+	
 	
 	return fereastra_cuvant
 
@@ -622,3 +625,7 @@ func modifica_categorie(cat, obiect):
 func _notification(what):
 	if (!buton_back_oprit and (what==MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST or what==MainLoop.NOTIFICATION_WM_QUIT_REQUEST)):
 		call_deferred(buton_back)
+		
+func redimensionare_fereastra():
+	var col = clamp(int(OS.window_size.x/350), 1, 4)
+	get_node("Categorii/ListaCategorii/HSplitContainer").columns = col
