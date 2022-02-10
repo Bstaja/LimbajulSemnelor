@@ -14,6 +14,7 @@ var animatie = Animation.new()
 func _ready():
 	$AnimationPlayer.add_animation("RedareDactileme", animatie)
 	$CasetaText/HSplitContainer/Text.placeholder_text = "Introduceți textul aici"
+	$Dactileme.position = OS.window_size/2
 	
 
 func _on_Buton_pressed():
