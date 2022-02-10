@@ -397,14 +397,11 @@ func creare_video(categorie, cuvant):
 	
 	add_child(fereastra_cuvant)
 	player_video.stream = video
-	fereastra_cuvant.redimensionare_fereastra()
-
 	
 	if (!lista_mica):
 		get_node("Categorie").visible = false
 		
 		player_video.play()
-		
 		fereastra_cuvant.get_node("Denumire/Text").text = cuvant
 		fereastra_cuvant.get_node("ButonInapoi").connect("pressed", self, "stergere_video")
 		fereastra_cuvant.get_node("Video/Replay/Buton").connect("pressed", fereastra_cuvant, "reluare_video")
@@ -419,6 +416,7 @@ func creare_video(categorie, cuvant):
 		player_video.connect("finished", get_node("FormareProp"), "urmat_video")
 		buton_back = "oprire_video_succesive"
 	
+	fereastra_cuvant.redimensionare_fereastra()
 	
 	return fereastra_cuvant
 

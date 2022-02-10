@@ -220,6 +220,14 @@ custom_styles/disabled = SubResource( 11 )
 custom_styles/normal = SubResource( 11 )
 text = " > "
 
+[node name="IncadrareDactilema" type="Control" parent="."]
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.774
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="text_entered" from="CasetaText/HSplitContainer/Text" to="." method="_on_Text_text_entered"]
 [connection signal="pressed" from="LiteraCurenta/VSplitContainer/HSplitContainer/LiteraPrecedenta" to="." method="_on_LiteraPrecedenta_pressed"]
 [connection signal="pressed" from="LiteraCurenta/VSplitContainer/HSplitContainer/LiteraUrmatoare" to="." method="_on_LiteraUrmatoare_pressed"]

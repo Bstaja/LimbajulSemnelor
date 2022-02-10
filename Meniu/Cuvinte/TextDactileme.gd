@@ -98,3 +98,18 @@ func _on_Text_text_entered(new_text):
 	
 func redimensionare_fereastra():
 	$Dactileme.position = OS.window_size/2
+	var dim = Vector2(388, 586)*2
+	var ratio = dim.y/dim.x
+	var new_size = dim
+	if (dim.x>$IncadrareDactilema.rect_size.x):
+		new_size.x = $IncadrareDactilema.rect_size.x
+		new_size.y = new_size.x*ratio
+	if (dim.y>$IncadrareDactilema.rect_size.y):
+		new_size.y = $IncadrareDactilema.rect_size.y
+		new_size.x = new_size.y/ratio
+	
+	new_size = Vector2(2, 2) - (dim/new_size)
+	if (new_size.y>-2):
+		$Dactileme.scale = Vector2(2, 2)+new_size
+	print(new_size)
+		
