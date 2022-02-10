@@ -397,6 +397,7 @@ func creare_video(categorie, cuvant):
 	
 	add_child(fereastra_cuvant)
 	player_video.stream = video
+	fereastra_cuvant.redimensionare_fereastra()
 
 	
 	if (!lista_mica):
@@ -412,7 +413,6 @@ func creare_video(categorie, cuvant):
 	else:
 		fereastra_cuvant.visible = false
 		fereastra_cuvant.anchor_top = .5
-		fereastra_cuvant.redimensionare_fereastra()
 		fereastra_cuvant.get_node("Video").anchor_top = 0
 		fereastra_cuvant.get_node("Denumire").visible = false
 		fereastra_cuvant.get_node("ButonInapoi").visible = false
