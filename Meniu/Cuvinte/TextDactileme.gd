@@ -14,7 +14,8 @@ var animatie = Animation.new()
 func _ready():
 	$AnimationPlayer.add_animation("RedareDactileme", animatie)
 	$CasetaText/HSplitContainer/Text.placeholder_text = "Introduceți textul aici"
-	$Dactileme.position = OS.window_size/2
+	get_tree().get_root().connect("size_changed", self, "redimensionare_fereastra")
+	redimensionare_fereastra()
 	
 
 func _on_Buton_pressed():
@@ -94,3 +95,6 @@ func _on_LiteraUrmatoare_pressed():
 func _on_Text_text_entered(new_text):
 	_on_Buton_pressed()
 	$CasetaText/HSplitContainer/Text.release_focus()
+	
+func redimensionare_fereastra():
+	$Dactileme.position = OS.window_size/2
