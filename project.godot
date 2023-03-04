@@ -39,6 +39,8 @@ window/size/width=1280
 window/size/height=1000
 window/energy_saving/keep_screen_on=false
 window/handheld/orientation="portrait"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [gui]
 
