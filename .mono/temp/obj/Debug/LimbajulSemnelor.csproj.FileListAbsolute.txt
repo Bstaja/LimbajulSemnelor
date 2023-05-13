@@ -1,0 +1,9 @@
+C:\copy drive\Desktop\PA\LimbajulSemnelor\.mono\temp\obj\Debug\LimbajulSemnelor.csproj.AssemblyReference.cache
+C:\copy drive\Desktop\PA\LimbajulSemnelor\.mono\temp\obj\Debug\LimbajulSemnelor.GeneratedMSBuildEditorConfig.editorconfig
+C:\copy drive\Desktop\PA\LimbajulSemnelor\.mono\temp\obj\Debug\LimbajulSemnelor.AssemblyInfoInputs.cache
+C:\copy drive\Desktop\PA\LimbajulSemnelor\.mono\temp\obj\Debug\LimbajulSemnelor.AssemblyInfo.cs
+C:\copy drive\Desktop\PA\LimbajulSemnelor\.mono\temp\obj\Debug\LimbajulSemnelor.csproj.CoreCompileInputs.cache
+C:\copy drive\Desktop\PA\LimbajulSemnelor\.mono\temp\bin\Debug\LimbajulSemnelor.dll
+C:\copy drive\Desktop\PA\LimbajulSemnelor\.mono\temp\bin\Debug\LimbajulSemnelor.pdb
+C:\copy drive\Desktop\PA\LimbajulSemnelor\.mono\temp\obj\Debug\LimbajulSemnelor.dll
+C:\copy drive\Desktop\PA\LimbajulSemnelor\.mono\temp\obj\Debug\LimbajulSemnelor.pdb
