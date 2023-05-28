@@ -7,3 +7,12 @@ C:\copy drive\Desktop\PA\LimbajulSemnelor\.mono\temp\bin\Debug\LimbajulSemnelor.
 C:\copy drive\Desktop\PA\LimbajulSemnelor\.mono\temp\bin\Debug\LimbajulSemnelor.pdb
 C:\copy drive\Desktop\PA\LimbajulSemnelor\.mono\temp\obj\Debug\LimbajulSemnelor.dll
 C:\copy drive\Desktop\PA\LimbajulSemnelor\.mono\temp\obj\Debug\LimbajulSemnelor.pdb
+C:\Users\Marius\Documents\GitHub\LimbajulSemnelor\.mono\temp\bin\Debug\LimbajulSemnelor.dll
+C:\Users\Marius\Documents\GitHub\LimbajulSemnelor\.mono\temp\bin\Debug\LimbajulSemnelor.pdb
+C:\Users\Marius\Documents\GitHub\LimbajulSemnelor\.mono\temp\obj\Debug\LimbajulSemnelor.csproj.AssemblyReference.cache
+C:\Users\Marius\Documents\GitHub\LimbajulSemnelor\.mono\temp\obj\Debug\LimbajulSemnelor.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Marius\Documents\GitHub\LimbajulSemnelor\.mono\temp\obj\Debug\LimbajulSemnelor.AssemblyInfoInputs.cache
+C:\Users\Marius\Documents\GitHub\LimbajulSemnelor\.mono\temp\obj\Debug\LimbajulSemnelor.AssemblyInfo.cs
+C:\Users\Marius\Documents\GitHub\LimbajulSemnelor\.mono\temp\obj\Debug\LimbajulSemnelor.csproj.CoreCompileInputs.cache
+C:\Users\Marius\Documents\GitHub\LimbajulSemnelor\.mono\temp\obj\Debug\LimbajulSemnelor.dll
+C:\Users\Marius\Documents\GitHub\LimbajulSemnelor\.mono\temp\obj\Debug\LimbajulSemnelor.pdb

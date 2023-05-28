@@ -52,8 +52,8 @@ __meta__ = {
 }
 
 [node name="HSplitContainer" type="GridContainer" parent="ListaCategorii"]
-margin_right = 690.0
-margin_bottom = 1140.8
+margin_right = 1250.0
+margin_bottom = 780.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 1 )

@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "wY0Og2HAefgnwhK0j3CjgZgdj8nvEmxwWMPjf+npAE6VPSxTO8LhqChYCaiaIfQk5/pkHcy8m2ZNgXAs+OAD4Q==",
+  "dgSpecHash": "yb2St4IZXnTjTcLMDshCmJtFPhbj54MaeFl4vmA/QKq+9LrhrSolluF1fezDcvftZpBk3SpAF/9X6+Rwcp74+g==",
   "success": true,
-  "projectFilePath": "C:\\copy drive\\Desktop\\PA\\LimbajulSemnelor\\LimbajulSemnelor.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Marius\\Documents\\GitHub\\LimbajulSemnelor\\LimbajulSemnelor.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Marius\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.2\\microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
+    "C:\\Users\\Marius\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net472\\1.0.2\\microsoft.netframework.referenceassemblies.net472.1.0.2.nupkg.sha512"
+  ],
   "logs": []
 }
