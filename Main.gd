@@ -472,10 +472,41 @@ func inchidere_aplicatie():
 func incarcare_date(tip):
 	if(dictionar.has(tip) and (tip!=date_curente.nume_categorie or tip == "Cuvinte găsite" or dictionar[tip].ends_with(".data"))):
 		if (!dictionar[tip].ends_with(".data")):
-			date_curente = load("res://Dictionar/"+dictionar[tip]+".tres")
+			
+			var de_inlocuit = "ăâîșț"
+			var inlocuit_cu = "aaist"
+			
+			var cat = tip
+			for j in range(de_inlocuit.length()):
+				cat = cat.replace(de_inlocuit[j], inlocuit_cu[j])
+			var script = load("res://AccesBazaDate.cs")
+			script = script.new()
+			var lista = script.DinCategorie(cat.replace("\n", " ")).split("\n", false)
+			print(lista[0])
+			date_curente = load("res://Dictionar/CategorieGenerica.tres")
+			date_curente.folder = lista[0].split(", ", false)[1]
+			date_curente.nume_categorie = lista[1].split(", ", false)[0]
+			var locc = PoolStringArray()
+			var cuvv = PoolStringArray()
+			
+			for i in lista:
+				var cuv = i.split(", ", false)
+				locc.append(cuv[3])
+				cuvv.append(cuv[2])
+				
+			date_curente.locatii = locc
+			date_curente.cuvinte = cuvv
+			
+			print(date_curente.cuvinte)
+			print(date_curente.locatii)
+			print(date_curente.folder)
+			print(date_curente.nume_categorie)
+				
+			
 		else:
 			var f = File.new()
 			var d
+			
 			f.open("user://Categorii/"+dictionar[tip], File.READ)
 			d = f.get_var(true)
 			date_curente = load("res://Dictionar/CategorieGenerica.tres")
